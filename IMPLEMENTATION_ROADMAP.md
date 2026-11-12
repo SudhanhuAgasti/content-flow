@@ -162,29 +162,34 @@ The platform is architected into two primary environments:
 ---
 
 ### PHASE 3: Admin CMS Dashboard (Frontend)
-- [ ] Build UI Design System in `client/src/components/common/`:
-  - `Button`, `Input`, `Textarea`, `Select`, `Badge`, `Modal`, `Table`, `Skeleton`, `EmptyState`.
-- [ ] Implement Authentication Layer:
-  - `AuthContext.jsx` with persistent `/api/auth/me` check.
+- [x] Build UI Design System in `client/src/components/common/`:
+  - `Button`, `Input`, `Textarea`, `Select`, `Badge`, `Modal`, `Skeleton`, `EmptyState`, `ConfirmDialog`.
+- [x] Implement Authentication Layer:
+  - `AuthContext.jsx` with persistent `/api/auth/me` check and cookie-based state.
   - `ProtectedRoute.jsx` route guard redirecting unauthorized visitors.
-  - `AdminLoginPage.jsx` with form validation and error handling.
-- [ ] Build Admin Layout (`AdminLayout.jsx`):
-  - Collapsible sidebar with active navigation states.
-  - Top header with admin profile, breadcrumbs, and logout trigger.
-- [ ] Build Dashboard Overview (`DashboardOverview.jsx`):
+  - `AdminLoginPage.jsx` with Zod validation, error handling, and seeded credentials autofill.
+- [x] Build Admin Layout (`AdminLayout.jsx`):
+  - Collapsible/mobile-responsive sidebar with active navigation states.
+  - Live MongoDB connection pill with emerald indicator.
+  - Top header with admin profile, breadcrumbs, public site link, and logout action.
+- [x] Build Dashboard Overview (`DashboardOverview.jsx`):
   - Stat KPI cards (Total Articles, Published, Drafts, Categories).
-  - Recent articles table with quick actions.
-- [ ] Build Content Management Table (`ContentManager.jsx`):
-  - Search input with debounce.
+  - Recent articles table with quick status toggle switch.
+- [x] Build Content Management Table (`ContentManager.jsx`):
+  - Search input with 400ms debouncing.
   - Category and status filters.
   - Sorting and server-side pagination controls.
   - Quick status toggle switch (Draft <-> Published).
   - Delete content modal with confirmation dialog.
-- [ ] Build Content Creation & Editing Forms (`ContentCreate.jsx`, `ContentEdit.jsx`):
-  - Image dropzone with instant client preview.
-  - Title, slug auto-preview, description, category selector, rich text body.
+- [x] Build Content Creation & Editing Forms (`ContentCreate.jsx`, `ContentEdit.jsx`):
+  - Image dropzone with instant client preview and size validation.
+  - Title, live slug auto-preview, description, category selector, rich text body.
   - Edit form pre-populates existing record and preserves existing image if not replaced.
-- [ ] Build Category Management View (`CategoryManager.jsx`).
+- [x] Build Category Management View (`CategoryManager.jsx`):
+  - Category listing with total and published article counts.
+  - Create and edit modals with validation.
+  - Safe deletion preventing deletion of categories with assigned articles.
+- [x] Verify production build (`vite build` passed in 8.43s with zero warnings/errors).
 
 ---
 
