@@ -14,7 +14,7 @@ import {
   PlusCircle,
   ArrowRight,
   TrendingUp,
-  Sparkles,
+  Activity,
   ExternalLink,
   Edit,
   Globe,
@@ -121,7 +121,7 @@ export const DashboardOverview = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-obsidian-800">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emperor-400 mb-1 font-mono">
-            <Sparkles className="w-3.5 h-3.5" />
+            <Activity className="w-3.5 h-3.5" />
             <span>Administrative Command</span>
           </div>
           <h1 className="text-3xl font-black text-white tracking-tight">

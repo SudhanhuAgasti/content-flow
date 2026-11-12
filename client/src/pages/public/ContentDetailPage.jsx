@@ -13,7 +13,6 @@ import {
   Share2,
   Bookmark,
   Layers,
-  Sparkles,
   CheckCircle2,
 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -243,3 +242,4 @@ export const ContentDetailPage = () => {
     </article>
   );
 };
+

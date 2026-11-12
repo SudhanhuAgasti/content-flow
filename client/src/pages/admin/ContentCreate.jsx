@@ -14,7 +14,7 @@ import {
   UploadCloud,
   X,
   ArrowLeft,
-  Sparkles,
+  PlusCircle,
   FileCheck,
   Image as ImageIcon,
 } from 'lucide-react';
@@ -149,7 +149,7 @@ export const ContentCreate = () => {
           </Link>
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emperor-400 mb-0.5 font-mono">
-              <Sparkles className="w-3.5 h-3.5" />
+              <PlusCircle className="w-3.5 h-3.5" />
               <span>Editorial Publishing</span>
             </div>
             <h1 className="text-3xl font-black text-white tracking-tight">

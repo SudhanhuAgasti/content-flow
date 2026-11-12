@@ -9,13 +9,13 @@ import { Skeleton } from '../../components/common/Skeleton.jsx';
 import { EmptyState } from '../../components/common/EmptyState.jsx';
 import { formatDate, calculateReadingTime } from '../../utils/formatters.js';
 import {
-  Sparkles,
+  Compass,
   ArrowRight,
   BookOpen,
   TrendingUp,
   Layers,
   Clock,
-  Compass,
+  Zap,
 } from 'lucide-react';
 
 export const HomePage = () => {
@@ -72,7 +72,7 @@ export const HomePage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900 border border-emperor-500/30 text-emperor-400 text-xs font-semibold mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-emperor-500" />
+              <Zap className="w-3.5 h-3.5 text-emperor-500" />
               <span>Full-Stack Architecture & Editorial Engineering</span>
             </div>
 
@@ -242,3 +242,4 @@ export const HomePage = () => {
     </div>
   );
 };
+

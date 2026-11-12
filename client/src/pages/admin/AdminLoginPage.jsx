@@ -4,9 +4,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useAuth } from '../../context/AuthContext.jsx';
+import { BrandLogo } from '../../components/common/BrandLogo.jsx';
 import { Input } from '../../components/common/Input.jsx';
 import { Button } from '../../components/common/Button.jsx';
-import { Lock, Mail, Eye, EyeOff, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
+import { Lock, Mail, Eye, EyeOff, ShieldCheck, KeyRound, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 
 const loginSchema = z.object({
@@ -41,7 +42,6 @@ export const AdminLoginPage = () => {
     },
   });
 
-  // If already authenticated, redirect straight to dashboard
   if (isAuthenticated) {
     return <Navigate to={from} replace />;
   }
@@ -73,16 +73,8 @@ export const AdminLoginPage = () => {
 
       <div className="w-full max-w-md relative z-10">
         {/* Brand Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-emperor-500 to-emperor-600 text-obsidian-950 font-black text-2xl shadow-emperor-glow mb-4 font-mono">
-            CF
-          </div>
-          <h1 className="text-2xl font-black text-white tracking-tight">
-            Content<span className="text-emperor-500">Flow</span> CMS
-          </h1>
-          <p className="mt-1.5 text-sm text-obsidian-400">
-            Administrator Authentication Portal
-          </p>
+        <div className="text-center mb-8 flex flex-col items-center">
+          <BrandLogo size="lg" to="/admin/login" subtitle="Administrator Authentication" />
         </div>
 
         {/* Login Card */}
@@ -136,9 +128,9 @@ export const AdminLoginPage = () => {
             <button
               type="button"
               onClick={fillDemoCredentials}
-              className="inline-flex items-center gap-2 text-xs font-medium text-emperor-400 hover:text-emperor-300 transition-colors p-2 rounded-lg hover:bg-obsidian-850 border border-transparent hover:border-obsidian-750"
+              className="inline-flex items-center gap-2 text-xs font-medium text-emperor-400 hover:text-emperor-300 transition-colors p-2 rounded-lg hover:bg-obsidian-850 border border-transparent hover:border-obsidian-750 cursor-pointer"
             >
-              <Sparkles className="w-3.5 h-3.5" />
+              <KeyRound className="w-3.5 h-3.5" />
               <span>Use Seeded Admin Credentials</span>
             </button>
           </div>
@@ -153,4 +145,3 @@ export const AdminLoginPage = () => {
     </div>
   );
 };
-

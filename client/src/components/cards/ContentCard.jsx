@@ -140,3 +140,4 @@ export const ContentCard = ({ content, layout = 'vertical' }) => {
     </article>
   );
 };
+

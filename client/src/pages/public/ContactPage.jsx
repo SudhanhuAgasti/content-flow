@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { Input } from '../../components/common/Input.jsx';
 import { Textarea } from '../../components/common/Textarea.jsx';
 import { Button } from '../../components/common/Button.jsx';
-import { Mail, MessageSquare, Send, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Mail, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 const contactSchema = z.object({
@@ -44,7 +44,7 @@ export const ContactPage = () => {
       {/* Header */}
       <div className="text-center space-y-3 max-w-2xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900 border border-emperor-500/30 text-emperor-400 text-xs font-semibold font-mono">
-          <Sparkles className="w-3.5 h-3.5 text-emperor-500" />
+          <MessageSquare className="w-3.5 h-3.5 text-emperor-500" />
           <span>Editorial Communications</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
@@ -157,3 +157,4 @@ export const ContactPage = () => {
     </div>
   );
 };
+

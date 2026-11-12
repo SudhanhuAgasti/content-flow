@@ -13,7 +13,7 @@ import {
   ChevronRight,
   BookOpen,
   ArrowUpDown,
-  Sparkles,
+  Layers,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -109,7 +109,7 @@ export const ContentListPage = () => {
       {/* Header Banner */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900 border border-emperor-500/30 text-emperor-400 text-xs font-semibold font-mono">
-          <Sparkles className="w-3.5 h-3.5 text-emperor-500" />
+          <Layers className="w-3.5 h-3.5 text-emperor-500" />
           <span>Full Public Archive</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
@@ -262,3 +262,4 @@ export const ContentListPage = () => {
     </div>
   );
 };
+

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
+import { BrandLogo } from '../components/common/BrandLogo.jsx';
 import {
   LayoutDashboard,
   FileText,
@@ -63,14 +64,7 @@ export const AdminLayout = () => {
     <div className="min-h-screen bg-obsidian-950 text-obsidian-100 flex flex-col md:flex-row">
       {/* Mobile Top Header */}
       <header className="md:hidden flex items-center justify-between px-4 py-3 bg-obsidian-900 border-b border-obsidian-800 sticky top-0 z-40">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-emperor-500 text-obsidian-950 font-black text-sm flex items-center justify-center font-mono">
-            CF
-          </div>
-          <span className="font-extrabold text-white text-base">
-            Content<span className="text-emperor-500">Flow</span>
-          </span>
-        </div>
+        <BrandLogo size="sm" to="/admin/dashboard" subtitle="Admin Control" />
 
         <button
           type="button"
@@ -89,19 +83,7 @@ export const AdminLayout = () => {
       >
         {/* Brand Banner */}
         <div className="p-6 border-b border-obsidian-800/80 hidden md:flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emperor-500 to-emperor-600 text-obsidian-950 font-black text-lg flex items-center justify-center shadow-emperor-sm font-mono">
-              CF
-            </div>
-            <div>
-              <span className="font-black text-white text-lg tracking-tight block">
-                Content<span className="text-emperor-500">Flow</span>
-              </span>
-              <span className="text-[10px] uppercase font-mono tracking-widest text-obsidian-400 block -mt-0.5">
-                Admin Control
-              </span>
-            </div>
-          </div>
+          <BrandLogo size="md" to="/admin/dashboard" subtitle="Master Control" />
         </div>
 
         {/* Live Status Pill */}

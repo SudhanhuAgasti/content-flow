@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/common/Button.jsx';
 import {
-  Sparkles,
   ShieldCheck,
   Database,
   Layers,
@@ -18,7 +17,7 @@ export const AboutPage = () => {
       {/* Hero Intro */}
       <div className="text-center space-y-4 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900 border border-emperor-500/30 text-emperor-400 text-xs font-semibold font-mono">
-          <Sparkles className="w-3.5 h-3.5 text-emperor-500" />
+          <Layers className="w-3.5 h-3.5 text-emperor-500" />
           <span>About ContentFlow</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight">
@@ -117,3 +116,4 @@ export const AboutPage = () => {
     </div>
   );
 };
+

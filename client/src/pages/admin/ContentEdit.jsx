@@ -15,7 +15,6 @@ import {
   UploadCloud,
   X,
   ArrowLeft,
-  Sparkles,
   FileCheck,
   RotateCcw,
 } from 'lucide-react';
@@ -177,7 +176,7 @@ export const ContentEdit = () => {
           </Link>
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emperor-400 mb-0.5 font-mono">
-              <Sparkles className="w-3.5 h-3.5" />
+              <FileCheck className="w-3.5 h-3.5" />
               <span>Article Revision</span>
             </div>
             <h1 className="text-3xl font-black text-white tracking-tight">
