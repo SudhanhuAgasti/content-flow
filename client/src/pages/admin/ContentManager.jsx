@@ -161,8 +161,8 @@ export const ContentManager = () => {
           </p>
         </div>
 
-        <Link to="/admin/content/create">
-          <Button variant="primary" icon={PlusCircle}>
+        <Link to="/admin/content/create" className="w-full sm:w-auto">
+          <Button variant="primary" icon={PlusCircle} className="w-full sm:w-auto">
             Create New Article
           </Button>
         </Link>
@@ -191,7 +191,7 @@ export const ContentManager = () => {
               setSelectedCategory(e.target.value);
               setCurrentPage(1);
             }}
-            className="px-3.5 py-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-white text-xs font-medium focus:outline-none focus:border-emperor-500 cursor-pointer"
+            className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-white text-xs font-medium focus:outline-none focus:border-emperor-500 cursor-pointer min-w-[140px]"
           >
             <option value="">All Categories</option>
             {categories.map((cat) => (
@@ -208,7 +208,7 @@ export const ContentManager = () => {
               setSelectedStatus(e.target.value);
               setCurrentPage(1);
             }}
-            className="px-3.5 py-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-white text-xs font-medium focus:outline-none focus:border-emperor-500 cursor-pointer"
+            className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-white text-xs font-medium focus:outline-none focus:border-emperor-500 cursor-pointer min-w-[120px]"
           >
             <option value="">All Statuses</option>
             <option value="published">Published</option>
@@ -219,7 +219,7 @@ export const ContentManager = () => {
           <button
             type="button"
             onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-obsidian-300 hover:text-white text-xs font-medium transition-colors cursor-pointer"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-obsidian-300 hover:text-white text-xs font-medium transition-colors cursor-pointer"
             title="Toggle Sort Order"
           >
             <ArrowUpDown className="w-3.5 h-3.5 text-emperor-500" />

@@ -187,9 +187,9 @@ export const AdminLayout = () => {
         </main>
 
         {/* Admin Footer */}
-        <footer className="border-t border-obsidian-800/80 px-8 py-4 text-center text-xs text-obsidian-500 font-mono flex items-center justify-between">
-          <span>ContentFlow CMS &bull; Master Admin Console</span>
-          <span>Security Level: Administrator Session Verified</span>
+        <footer className="border-t border-obsidian-800/80 px-4 sm:px-8 py-4 text-center text-xs text-obsidian-400 font-mono flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span>ContentFlow &bull; Workspace Active</span>
+          <span className="text-jade-400">System Healthy</span>
         </footer>
       </div>
     </div>

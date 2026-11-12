@@ -1,4 +1,48 @@
-# ContentFlow — Enterprise MERN Content Management System
+node server/scripts/testPhase2.js
+--- STARTING PHASE 2 AUTOMATED INTEGRATION TESTS ---
+[Database] MongoDB Connected Successfully: 127.0.0.1/contentflow
+
+[Test 1] Testing Health Endpoint...
+[Test Server] Running on http://127.0.0.1:5001
+Status: 200, Message: ContentFlow API Gateway is operational
+
+[Test 2] Testing Invalid Admin Login...
+Status: 401, Error Message: Invalid email or password.
+
+[Test 3] Testing Valid Admin Login...
+Status: 200, Message: Admin authenticated successfully
+
+[Test 4] Testing GET /api/auth/me...
+Status: 200, Admin Name: ContentFlow Administrator
+
+[Test 5] Testing GET /api/admin/categories...
+Status: 200, Categories Found: 5
+
+[Test 6] Testing POST /api/admin/content (Multipart image upload)...
+Status: 201, Message: Content created successfully
+Created Article Slug: mastering-full-stack-mern-architecture-in-2026-2, Status: draft
+
+[Test 7] Verifying Draft Article is NOT visible to public readers...
+Public Articles Count: 2, Draft Visible: false
+
+[Test 8] Testing PATCH /api/admin/content/:id/status (Publishing Article)...
+Status: 200, New Article Status: published
+
+[Test 9] Verifying Published Article is now accessible to public readers...
+Public Articles Count: 3, Article Visible: true
+
+[Test 10] Testing GET /api/public/content/mastering-full-stack-mern-architecture-in-2026-2...
+Status: 200, Article Title: "Mastering Full-Stack MERN Architecture in 2026"
+
+[Test 11] Testing POST /api/auth/logout...
+Status: 200, Message: Logged out successfully
+
+=======================================================
+  ALL 11 INTEGRATION TESTS PASSED WITH 100% SUCCESS!
+=======================================================
+[Database] MongoDB connection disconnected.
+[Database] MongoDB connection closed.
+PS C:\Users\sudha\OneDrive\Desktop\content flow\content_flow> # ContentFlow — Enterprise MERN Content Management System
 
 <div align="center">
 
@@ -391,3 +435,4 @@ Use this checklist during the submission demonstration video:
 - **Developer**: Senior Full-Stack Engineering Team
 - **Repository**: [https://github.com/SudhanhuAgasti/content-flow.git](https://github.com/SudhanhuAgasti/content-flow.git)
 - **License**: MIT
+

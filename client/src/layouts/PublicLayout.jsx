@@ -272,16 +272,22 @@ export const PublicLayout = () => {
           </div>
 
           {/* Bottom Copyright Bar */}
-          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-obsidian-500 font-mono">
-            <p>
-              &copy; {new Date().getFullYear()} ContentFlow CMS &bull; Built with MERN Stack Architecture
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-obsidian-400 font-mono">
+            <p className="text-center sm:text-left">
+              &copy; {new Date().getFullYear()} ContentFlow. All editorial rights reserved.
             </p>
-            <div className="flex items-center gap-6">
-              <Link to="/admin/login" className="hover:text-emperor-400 transition-colors">
-                Admin Authentication
+            <div className="flex items-center gap-4 text-obsidian-400">
+              <Link to="/content" className="hover:text-white transition-colors">
+                Archive
               </Link>
               <span>&bull;</span>
-              <span>Theme: Emperor Yellow & Obsidian</span>
+              <Link to="/about" className="hover:text-white transition-colors">
+                Architecture
+              </Link>
+              <span>&bull;</span>
+              <Link to="/contact" className="hover:text-white transition-colors">
+                Desk
+              </Link>
             </div>
           </div>
         </div>

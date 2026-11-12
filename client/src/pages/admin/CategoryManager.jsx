@@ -153,7 +153,7 @@ export const CategoryManager = () => {
           </p>
         </div>
 
-        <Button variant="primary" icon={PlusCircle} onClick={openCreateModal}>
+        <Button variant="primary" icon={PlusCircle} onClick={openCreateModal} className="w-full sm:w-auto">
           Add New Category
         </Button>
       </div>

@@ -132,14 +132,14 @@ export const DashboardOverview = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Link to="/admin/content/create">
-            <Button variant="primary" icon={PlusCircle}>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link to="/admin/content/create" className="w-full sm:w-auto">
+            <Button variant="primary" icon={PlusCircle} className="w-full sm:w-auto">
               Create New Article
             </Button>
           </Link>
-          <a href="/" target="_blank" rel="noopener noreferrer">
-            <Button variant="secondary" icon={ExternalLink}>
+          <a href="/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            <Button variant="secondary" icon={ExternalLink} className="w-full sm:w-auto">
               View Live Site
             </Button>
           </a>
