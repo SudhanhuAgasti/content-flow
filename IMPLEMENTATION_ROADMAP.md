@@ -194,26 +194,27 @@ The platform is architected into two primary environments:
 ---
 
 ### PHASE 4: Public Dynamic Website (Frontend)
-- [ ] Build Public Layout (`PublicLayout.jsx`):
-  - Modern header with brand logo, nav links, category quick menu, and responsive mobile drawer.
-  - Professional editorial footer.
-- [ ] Build Home Page (`HomePage.jsx`):
-  - Hero banner showcasing high-impact published content.
-  - Featured content section.
-  - Latest published articles grid.
-- [ ] Build Content Catalog Page (`ContentListPage.jsx`):
-  - Multi-category filter pills.
-  - Live search bar.
-  - Grid of `ContentCard` items (image, badge, title, excerpt, date, read time).
-  - Pagination controls.
-- [ ] Build Dynamic Content Detail Page (`ContentDetailPage.jsx`):
+- [x] Build Public Layout (`PublicLayout.jsx`):
+  - Modern header with custom `BrandLogo` emblem, nav links, category quick menu, and responsive mobile drawer.
+  - Professional editorial footer with taxonomy links and copyright.
+- [x] Build Home Page (`HomePage.jsx`):
+  - Dynamic Hero banner showcasing top published content from MongoDB.
+  - Featured stories grid and latest published articles with topic filter pills.
+- [x] Build Content Catalog Page (`ContentListPage.jsx`):
+  - Multi-category filter pills and dropdown.
+  - Debounced search bar.
+  - Responsive grid of `ContentCard` items (image, badge, title, excerpt, date, read time).
+  - Server-side pagination controls.
+- [x] Build Dynamic Content Detail Page (`ContentDetailPage.jsx`):
   - Fetches by `:slug` via public API.
-  - Cover image, category badge, publication date, author details.
-  - Formatted prose content.
-  - Related articles in the same category.
-- [ ] Build Category Archive Page (`CategoryPage.jsx`).
-- [ ] Build Editorial Static Pages (`AboutPage.jsx`, `ContactPage.jsx`, `NotFoundPage.jsx`).
-- [ ] Implement loading skeletons and zero-data empty states.
+  - Cover image, category badge, publication date, calculated read time, formatted prose body.
+  - Related articles from the same category.
+  - Returns clean 404 state if article is unpublished or in draft mode.
+- [x] Build Category Archive Page (`CategoryPage.jsx`):
+  - Archive view for `/category/:categorySlug` with category metadata and article cards.
+- [x] Build Editorial Static Pages (`AboutPage.jsx`, `ContactPage.jsx`, `NotFoundPage.jsx`).
+- [x] Implement loading skeletons and zero-data empty states across all public views.
+- [x] Verify production build (`vite build` passed in 9.00s with zero errors).
 
 ---
 

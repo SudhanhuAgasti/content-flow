@@ -61,3 +61,4 @@ export const contentService = {
     return api.get(`/public/content/${slug}`);
   },
 };
+

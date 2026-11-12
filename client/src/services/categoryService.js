@@ -36,3 +36,4 @@ export const categoryService = {
     return api.get('/public/categories');
   },
 };
+

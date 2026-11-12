@@ -57,3 +57,4 @@ export const createSlugPreview = (text) => {
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
 };
+

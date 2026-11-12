@@ -1,7 +1,23 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { ProtectedRoute } from './ProtectedRoute.jsx';
+
+// Layouts
+import { PublicLayout } from '../layouts/PublicLayout.jsx';
 import { AdminLayout } from '../layouts/AdminLayout.jsx';
+
+// Route Guards
+import { ProtectedRoute } from './ProtectedRoute.jsx';
+
+// Public Pages
+import { HomePage } from '../pages/public/HomePage.jsx';
+import { ContentListPage } from '../pages/public/ContentListPage.jsx';
+import { ContentDetailPage } from '../pages/public/ContentDetailPage.jsx';
+import { CategoryPage } from '../pages/public/CategoryPage.jsx';
+import { AboutPage } from '../pages/public/AboutPage.jsx';
+import { ContactPage } from '../pages/public/ContactPage.jsx';
+import { NotFoundPage } from '../pages/public/NotFoundPage.jsx';
+
+// Admin Pages
 import { AdminLoginPage } from '../pages/admin/AdminLoginPage.jsx';
 import { DashboardOverview } from '../pages/admin/DashboardOverview.jsx';
 import { ContentManager } from '../pages/admin/ContentManager.jsx';
@@ -9,37 +25,24 @@ import { ContentCreate } from '../pages/admin/ContentCreate.jsx';
 import { ContentEdit } from '../pages/admin/ContentEdit.jsx';
 import { CategoryManager } from '../pages/admin/CategoryManager.jsx';
 
-// Temporary Public Landing View for Phase 3 (Phase 4 will build full public editorial portal)
-const PublicLandingPlaceholder = () => (
-  <div className="min-h-screen bg-obsidian-950 text-white flex flex-col items-center justify-center p-6 text-center">
-    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emperor-500 to-emperor-600 text-obsidian-950 font-black text-2xl flex items-center justify-center mb-6 shadow-emperor-glow font-mono">
-      CF
-    </div>
-    <h1 className="text-4xl md:text-5xl font-black tracking-tight">
-      Content<span className="text-emperor-500">Flow</span> Platform
-    </h1>
-    <p className="mt-3 text-obsidian-400 max-w-md text-sm leading-relaxed">
-      Phase 3 Admin Control Panel is fully operational. Log in to manage content or proceed to Phase 4 for public portal.
-    </p>
-    <div className="mt-8 flex items-center gap-4">
-      <a
-        href="/admin/login"
-        className="px-6 py-3 rounded-xl bg-emperor-500 hover:bg-emperor-400 text-obsidian-950 font-bold shadow-emperor-sm transition-all"
-      >
-        Open Admin CMS Dashboard &rarr;
-      </a>
-    </div>
-  </div>
-);
-
 export const AppRoutes = () => {
   return (
     <Routes>
-      {/* Public Routes */}
-      <Route path="/" element={<PublicLandingPlaceholder />} />
+      {/* Public Editorial Web Portal */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/content" element={<ContentListPage />} />
+        <Route path="/content/:slug" element={<ContentDetailPage />} />
+        <Route path="/category/:categorySlug" element={<CategoryPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+
+      {/* Admin Authentication */}
       <Route path="/admin/login" element={<AdminLoginPage />} />
 
-      {/* Protected Admin Routes */}
+      {/* Protected Admin CMS Dashboard */}
       <Route element={<ProtectedRoute />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
@@ -50,9 +53,6 @@ export const AppRoutes = () => {
           <Route path="/admin/categories" element={<CategoryManager />} />
         </Route>
       </Route>
-
-      {/* Fallback */}
-      <Route path="*" element={<Navigate to="/admin/login" replace />} />
     </Routes>
   );
 };

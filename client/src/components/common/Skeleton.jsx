@@ -29,3 +29,4 @@ export const TableSkeleton = ({ rows = 5, cols = 5 }) => {
     </div>
   );
 };
+
