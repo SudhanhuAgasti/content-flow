@@ -40,11 +40,22 @@ export const PublicLayout = () => {
   }, []);
 
   const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/content', label: 'All Articles' },
-    { to: '/about', label: 'About' },
-    { to: '/contact', label: 'Contact' },
+    { to: '/', label: 'Home', anchor: null },
+    { to: '/content', label: 'All Articles', anchor: '#articles' },
+    { to: '/about', label: 'About', anchor: '#about' },
+    { to: '/contact', label: 'Contact', anchor: '#contact' },
   ];
+
+  const handleNavClick = (e, link) => {
+    if (location.pathname === '/' && link.anchor) {
+      e.preventDefault();
+      const targetElement = document.querySelector(link.anchor);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setMobileMenuOpen(false);
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-obsidian-950 text-obsidian-100 flex flex-col selection:bg-emperor-500 selection:text-obsidian-950">
@@ -60,6 +71,7 @@ export const PublicLayout = () => {
               <NavLink
                 key={link.to}
                 to={link.to}
+                onClick={(e) => handleNavClick(e, link)}
                 className={({ isActive }) =>
                   `text-sm font-semibold tracking-wide transition-colors ${
                     isActive
@@ -141,6 +153,7 @@ export const PublicLayout = () => {
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  onClick={(e) => handleNavClick(e, link)}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-xl text-sm font-semibold transition-colors ${
                       isActive

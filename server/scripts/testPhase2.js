@@ -82,7 +82,7 @@ const runTests = async () => {
 
     // Attach sample 1x1 image buffer
     const dummyImageBlob = new Blob([Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46])], {
-      type: 'image/jpeg',
+      type: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsi8suiBgSg0q34iYP0TyCKNYxjC4EtRJ1w_FQ31Pobg&s=10',
     });
     formData.append('image', dummyImageBlob, 'featured.jpg');
 
