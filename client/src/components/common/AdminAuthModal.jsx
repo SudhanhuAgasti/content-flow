@@ -144,3 +144,4 @@ export const AdminAuthModal = ({ isOpen, onClose }) => {
     </Modal>
   );
 };
+
