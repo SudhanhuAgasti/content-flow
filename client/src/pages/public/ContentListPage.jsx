@@ -173,11 +173,10 @@ export const ContentListPage = () => {
             setSelectedCategory('');
             setCurrentPage(1);
           }}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all shrink-0 cursor-pointer ${
-            selectedCategory === ''
-              ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
-              : 'bg-obsidian-900 border border-obsidian-800 text-obsidian-400 hover:text-white hover:bg-obsidian-850'
-          }`}
+          className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all shrink-0 cursor-pointer ${selectedCategory === ''
+            ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
+            : 'bg-obsidian-900 border border-obsidian-800 text-obsidian-400 hover:text-white hover:bg-obsidian-850'
+            }`}
         >
           All Topics ({pagination.totalCount})
         </button>
@@ -189,11 +188,10 @@ export const ContentListPage = () => {
               setSelectedCategory(cat.slug);
               setCurrentPage(1);
             }}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all shrink-0 cursor-pointer ${
-              selectedCategory === cat.slug
-                ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
-                : 'bg-obsidian-900 border border-obsidian-800 text-obsidian-400 hover:text-white hover:bg-obsidian-850'
-            }`}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all shrink-0 cursor-pointer ${selectedCategory === cat.slug
+              ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
+              : 'bg-obsidian-900 border border-obsidian-800 text-obsidian-400 hover:text-white hover:bg-obsidian-850'
+              }`}
           >
             {cat.name} ({cat.publishedCount})
           </button>

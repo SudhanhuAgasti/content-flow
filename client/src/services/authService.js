@@ -9,6 +9,13 @@ export const authService = {
   },
 
   /**
+   * Fetch Google Client ID securely from server configuration
+   */
+  getGoogleClientId: async () => {
+    return api.get('/auth/google/client-id');
+  },
+
+  /**
    * Log in or register administrator via Google OAuth credential token
    */
   googleAuth: async (credential) => {
