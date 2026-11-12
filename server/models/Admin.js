@@ -24,9 +24,27 @@ const adminSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, 'Password is required'],
+      required: function () {
+        return this.authProvider === 'local';
+      },
       minlength: [8, 'Password must be at least 8 characters long'],
       select: false, // Never return password hash in queries unless explicitly requested
+    },
+    authProvider: {
+      type: String,
+      enum: ['local', 'google'],
+      default: 'local',
+      index: true,
+    },
+    googleId: {
+      type: String,
+      unique: true,
+      sparse: true,
+      index: true,
+    },
+    avatar: {
+      type: String,
+      default: '',
     },
     role: {
       type: String,
@@ -42,7 +60,7 @@ const adminSchema = new mongoose.Schema(
 
 // Hash password before saving if modified
 adminSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
+  if (!this.isModified('password') || !this.password) return next();
 
   try {
     const salt = await bcrypt.genSalt(12);
@@ -55,6 +73,7 @@ adminSchema.pre('save', async function (next) {
 
 // Compare entered password with stored hashed password
 adminSchema.methods.comparePassword = async function (enteredPassword) {
+  if (!this.password) return false;
   return bcrypt.compare(enteredPassword, this.password);
 };
 

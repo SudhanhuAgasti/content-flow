@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { login, logout, getMe } from '../controllers/authController.js';
+import { login, googleAuth, logout, getMe } from '../controllers/authController.js';
 import { protectAdmin } from '../middleware/authMiddleware.js';
 import { authLimiter } from '../middleware/rateLimiter.js';
 import { validate } from '../middleware/validateMiddleware.js';
@@ -9,6 +9,7 @@ const router = Router();
 
 // Public auth routes (rate-limited)
 router.post('/login', authLimiter, validate(loginSchema), login);
+router.post('/google', authLimiter, googleAuth);
 
 // Protected auth routes
 router.post('/logout', protectAdmin, logout);

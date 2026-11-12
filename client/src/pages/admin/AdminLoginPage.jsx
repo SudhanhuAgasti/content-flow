@@ -8,6 +8,7 @@ import { BrandLogo } from '../../components/common/BrandLogo.jsx';
 import { Input } from '../../components/common/Input.jsx';
 import { Button } from '../../components/common/Button.jsx';
 import { Lock, Mail, Eye, EyeOff, ShieldCheck, KeyRound, ArrowRight } from 'lucide-react';
+import { GoogleLogin } from '@react-oauth/google';
 import { toast } from 'sonner';
 
 const loginSchema = z.object({
@@ -21,11 +22,12 @@ const loginSchema = z.object({
 });
 
 export const AdminLoginPage = () => {
-  const { login, isAuthenticated } = useAuth();
+  const { login, loginWithGoogle, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const from = location.state?.from?.pathname || '/admin/dashboard';
 
@@ -63,6 +65,23 @@ export const AdminLoginPage = () => {
     setValue('email', 'admin@contentflow.com');
     setValue('password', 'Admin@SecurePass2026!');
     toast.info('Seeded admin credentials populated');
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      setGoogleLoading(true);
+      await loginWithGoogle(credentialResponse.credential);
+      toast.success('Admin authenticated via Google OAuth');
+      navigate(from, { replace: true });
+    } catch (error) {
+      toast.error(error.message || 'Google OAuth authentication failed');
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
+
+  const handleGoogleError = () => {
+    toast.error('Google Sign-In was cancelled or failed to initialize');
   };
 
   return (
@@ -122,6 +141,39 @@ export const AdminLoginPage = () => {
               Sign In to Dashboard
             </Button>
           </form>
+
+          {/* Social OAuth Divider */}
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-obsidian-800" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-obsidian-900 px-3 text-obsidian-400 font-mono tracking-wider">
+                Or continue with OAuth
+              </span>
+            </div>
+          </div>
+
+          {/* Google Sign-in Trigger */}
+          <div className="flex flex-col items-center justify-center">
+            {googleLoading ? (
+              <div className="py-2.5 text-xs text-emperor-400 font-mono animate-pulse">
+                Verifying Google Credentials...
+              </div>
+            ) : (
+              <div className="w-full flex justify-center">
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleError}
+                  theme="filled_black"
+                  shape="pill"
+                  size="large"
+                  text="signin_with"
+                  width="100%"
+                />
+              </div>
+            )}
+          </div>
 
           {/* Quick Demo Helper */}
           <div className="mt-8 pt-6 border-t border-obsidian-800 text-center">

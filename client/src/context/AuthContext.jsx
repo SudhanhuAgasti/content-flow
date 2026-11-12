@@ -39,6 +39,16 @@ export const AuthProvider = ({ children }) => {
     throw new Error(res.message || 'Login failed');
   };
 
+  // Log in or register administrator via Google OAuth credential
+  const loginWithGoogle = async (credential) => {
+    const res = await authService.googleAuth(credential);
+    if (res.success && res.data?.admin) {
+      setAdmin(res.data.admin);
+      return res.data.admin;
+    }
+    throw new Error(res.message || 'Google authentication failed');
+  };
+
   // Log out administrator
   const logout = async () => {
     try {
@@ -53,6 +63,7 @@ export const AuthProvider = ({ children }) => {
     loading,
     isAuthenticated: Boolean(admin),
     login,
+    loginWithGoogle,
     logout,
     refreshAdmin: checkAuth,
   };

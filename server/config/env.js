@@ -19,6 +19,7 @@ export const env = {
   CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME || '',
   CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY || '',
   CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET || '',
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || '',
   ADMIN_NAME: process.env.ADMIN_NAME || 'ContentFlow Administrator',
   ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'admin@contentflow.com',
   ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || 'Admin@SecurePass2026!',

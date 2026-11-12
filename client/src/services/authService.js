@@ -9,6 +9,13 @@ export const authService = {
   },
 
   /**
+   * Log in or register administrator via Google OAuth credential token
+   */
+  googleAuth: async (credential) => {
+    return api.post('/auth/google', { credential });
+  },
+
+  /**
    * Log out currently authenticated administrator
    */
   logout: async () => {
