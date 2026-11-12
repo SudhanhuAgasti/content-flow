@@ -63,6 +63,16 @@ export default {
         'jade-glow': '0 0 20px -5px rgba(16, 185, 129, 0.30)',
         'surface-card': '0 4px 20px -2px rgba(0, 0, 0, 0.65)',
       },
+      keyframes: {
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '20%, 60%': { transform: 'translateX(-8px)' },
+          '40%, 80%': { transform: 'translateX(8px)' },
+        },
+      },
+      animation: {
+        shake: 'shake 0.4s ease-in-out',
+      },
     },
   },
   plugins: [],

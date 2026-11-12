@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 import { BrandLogo } from '../components/common/BrandLogo.jsx';
 import { Button } from '../components/common/Button.jsx';
+import { AdminAuthModal } from '../components/common/AdminAuthModal.jsx';
 import { categoryService } from '../services/categoryService.js';
 import {
   Menu,
@@ -17,6 +18,7 @@ import {
 export const PublicLayout = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
   const location = useLocation();
 
   // Close mobile drawer on route change
@@ -128,11 +130,14 @@ export const PublicLayout = () => {
               </button>
             </Link>
 
-            <Link to="/admin/login">
-              <Button variant="outline" size="sm" icon={Shield}>
-                Admin Portal
-              </Button>
-            </Link>
+            <Button
+              variant="outline"
+              size="sm"
+              icon={Shield}
+              onClick={() => setAuthModalOpen(true)}
+            >
+              Admin Portal
+            </Button>
           </div>
 
           {/* Mobile Menu Toggle Button */}
@@ -186,11 +191,18 @@ export const PublicLayout = () => {
               )}
 
               <div className="pt-3 border-t border-obsidian-800">
-                <Link to="/admin/login" className="w-full block">
-                  <Button variant="primary" size="md" className="w-full" icon={Shield}>
-                    Admin Dashboard
-                  </Button>
-                </Link>
+                <Button
+                  variant="primary"
+                  size="md"
+                  className="w-full"
+                  icon={Shield}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setAuthModalOpen(true);
+                  }}
+                >
+                  Admin Dashboard
+                </Button>
               </div>
             </nav>
           </div>
@@ -292,6 +304,12 @@ export const PublicLayout = () => {
           </div>
         </div>
       </footer>
+
+      {/* Admin Authentication Gate Modal */}
+      <AdminAuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+      />
     </div>
   );
 };
