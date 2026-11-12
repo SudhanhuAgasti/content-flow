@@ -81,10 +81,12 @@ const runTests = async () => {
     formData.append('status', 'draft');
 
     // Attach sample 1x1 image buffer
-    const dummyImageBlob = new Blob([Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46])], {
-      type: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsi8suiBgSg0q34iYP0TyCKNYxjC4EtRJ1w_FQ31Pobg&s=10',
-    });
-    formData.append('image', dummyImageBlob, 'featured.jpg');
+    const dummyImageFile = new File(
+      [Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46])],
+      'featured.jpg',
+      { type: 'image/jpeg' }
+    );
+    formData.append('image', dummyImageFile);
 
     const createContentRes = await fetch(`${baseUrl}/admin/content`, {
       method: 'POST',

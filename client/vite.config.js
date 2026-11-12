@@ -20,5 +20,18 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    target: 'esnext',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-ui': ['lucide-react', 'sonner'],
+          'vendor-form': ['react-hook-form', 'zod', '@hookform/resolvers'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
 });
-
