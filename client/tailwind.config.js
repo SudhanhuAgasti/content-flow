@@ -1,0 +1,70 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        // Imperial / Emperor Yellow Palette
+        emperor: {
+          50: '#FFFDF0',
+          100: '#FEF9C3',
+          200: '#FEF08A',
+          300: '#FDE047',
+          400: '#FACC15',
+          500: '#F5B800', // Master Emperor Yellow
+          600: '#D99B00',
+          700: '#B47B00',
+          800: '#8A5C00',
+          900: '#664300',
+          950: '#3D2700',
+        },
+        // Deep Obsidian / Jet Black Palette
+        obsidian: {
+          950: '#07080A', // Deepest background
+          900: '#0C0E12', // Primary dark surface
+          850: '#11141A', // Secondary card surface
+          800: '#171B24', // Elevated surface / dropdowns
+          750: '#1E232F', // Highlighted table rows / inputs
+          700: '#2A303F', // Borders and dividers
+          600: '#3E465B',
+          500: '#5A647E',
+          400: '#8B95AC',
+          300: '#BCC3D4',
+          200: '#E1E5EE',
+          100: '#F1F4F9',
+        },
+        // Emerald Green Accent Palette (for published states, success, live metrics)
+        jade: {
+          50: '#ECFDF5',
+          100: '#D1FAE5',
+          200: '#A7F3D0',
+          300: '#6EE7B7',
+          400: '#34D399',
+          500: '#10B981', // Master Green
+          600: '#059669',
+          700: '#047857',
+          800: '#065F46',
+          900: '#064E3B',
+          950: '#022C22',
+        },
+      },
+      fontFamily: {
+        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Merriweather', 'Georgia', 'serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
+      boxShadow: {
+        'emperor-glow': '0 0 25px -5px rgba(245, 184, 0, 0.25)',
+        'emperor-sm': '0 0 15px -3px rgba(245, 184, 0, 0.20)',
+        'jade-glow': '0 0 20px -5px rgba(16, 185, 129, 0.30)',
+        'surface-card': '0 4px 20px -2px rgba(0, 0, 0, 0.65)',
+      },
+    },
+  },
+  plugins: [],
+}
+
