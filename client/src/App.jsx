@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { AppRoutes } from './routes/AppRoutes.jsx';
 import { ErrorBoundary } from './components/common/ErrorBoundary.jsx';
+import { NetworkPulseOverlay } from './components/common/NetworkPulseOverlay.jsx';
 import { Toaster } from 'sonner';
 
 export default function App() {
@@ -16,6 +17,8 @@ export default function App() {
       >
         <AuthProvider>
           <AppRoutes />
+          {/* Concept 03: Minimal Futuristic Network Pulse Screen */}
+          <NetworkPulseOverlay />
           <Toaster
             position="top-right"
             theme="dark"

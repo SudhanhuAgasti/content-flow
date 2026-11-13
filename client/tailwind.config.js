@@ -80,11 +80,22 @@ export default {
           '70%': { transform: 'translateY(4px) rotateX(-5deg) scale(1.02)' },
           '100%': { opacity: '1', transform: 'translateY(0) rotateX(0deg) scale(1)' },
         },
+        pulseWave: {
+          '0%': { transform: 'scale(0.2)', opacity: '0.85' },
+          '50%': { opacity: '0.5' },
+          '100%': { transform: 'scale(1.35)', opacity: '0' },
+        },
+        corePing: {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.22)', opacity: '0.85' },
+        },
       },
       animation: {
         shake: 'shake 0.4s ease-in-out',
         'card-rise': 'cardRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'word-drop': 'wordDrop 0.75s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards',
+        'pulse-wave': 'pulseWave 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite',
+        'core-ping': 'corePing 1.2s ease-in-out infinite',
       },
     },
   },
