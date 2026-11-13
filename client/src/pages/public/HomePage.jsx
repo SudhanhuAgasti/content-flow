@@ -102,43 +102,61 @@ export const HomePage = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10 pointer-events-auto">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-4 perspective-[1000px]">
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-900/90 border border-emperor-500/40 text-emperor-400 text-xs font-semibold mb-6 backdrop-blur-xl shadow-[0_4px_20px_rgba(245,184,0,0.15)] animate-word-drop" style={{ animationDelay: '50ms' }}>
-              <Zap className="w-3.5 h-3.5 text-emperor-400 animate-pulse" />
-              <span className="tracking-wide uppercase font-mono text-[11px]">Editorial Architecture & Full-Stack Mesh</span>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-obsidian-900/90 border border-emperor-500/40 text-emperor-400 text-[10px] sm:text-xs font-semibold mb-6 backdrop-blur-xl shadow-[0_4px_20px_rgba(245,184,0,0.15)] animate-word-drop max-w-full truncate" style={{ animationDelay: '50ms' }}>
+              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emperor-400 animate-pulse shrink-0" />
+              <span className="tracking-wide uppercase font-mono text-[9px] min-[400px]:text-[10px] sm:text-[11px] truncate">Editorial Architecture & Full-Stack Mesh</span>
             </div>
 
-            {/* Editorial Headline: Clean Line Distribution with spacious desktop hierarchy */}
-            <h1 className="text-2xl min-[400px]:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.2] drop-shadow-[0_12px_35px_rgba(0,0,0,0.98)] font-display flex flex-col items-center md:gap-y-3 w-full px-2">
-              {/* Line 1: Curated Insights (Responsive on small mobile) */}
-              <div className="flex flex-wrap items-center justify-center gap-x-2 min-[400px]:gap-x-4 md:gap-x-6">
-                <span className="inline-block animate-word-drop text-white tracking-normal md:tracking-wider" style={{ animationDelay: '120ms' }}>
+            {/* Editorial Headline: Clean side-by-side words with distinct premium typography */}
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.2] drop-shadow-[0_12px_35px_rgba(0,0,0,0.98)] flex flex-col items-center gap-y-2 sm:gap-y-3.5 w-full px-2">
+              {/* Line 1: Curated Insights - Strictly Side-by-Side */}
+              <div className="flex items-center justify-center gap-x-3 sm:gap-x-5 whitespace-nowrap">
+                <span
+                  className="inline-block animate-word-drop text-white tracking-normal sm:tracking-wide font-extrabold"
+                  style={{ animationDelay: '120ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
+                >
                   Curated
                 </span>
-                <span className="inline-block animate-word-drop text-transparent bg-clip-text bg-gradient-to-r from-white via-obsidian-100 to-obsidian-200 tracking-normal md:tracking-wider" style={{ animationDelay: '200ms' }}>
+                <span
+                  className="inline-block animate-word-drop text-transparent bg-clip-text bg-gradient-to-r from-white via-obsidian-100 to-obsidian-200 tracking-normal sm:tracking-wide font-extrabold"
+                  style={{ animationDelay: '200ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
+                >
                   Insights
                 </span>
               </div>
 
-              {/* Line 2: Modern Software */}
-              <div className="flex flex-wrap items-center justify-center gap-x-2 min-[400px]:gap-x-3.5 mt-1.5 md:mt-3">
-                <span className="inline-block animate-word-drop text-emperor-400 font-black tracking-normal md:tracking-wide text-2xl min-[400px]:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-center" style={{ animationDelay: '280ms' }}>
-                  Modern Software
+              {/* Line 2: Modern Software - Strictly Side-by-Side in rich Emperor Yellow */}
+              <div className="flex items-center justify-center gap-x-3 sm:gap-x-5 whitespace-nowrap">
+                <span
+                  className="inline-block animate-word-drop text-emperor-400 font-black tracking-normal sm:tracking-wide"
+                  style={{ animationDelay: '280ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
+                >
+                  Modern
+                </span>
+                <span
+                  className="inline-block animate-word-drop text-emperor-400 font-black tracking-normal sm:tracking-wide"
+                  style={{ animationDelay: '340ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
+                >
+                  Software
                 </span>
               </div>
 
               {/* Line 3: Builders (Ultra-Attractive 3D Liquid Floating Bubble with Ambient Neon Reflection) */}
-              <div className="flex justify-center mt-3 sm:mt-5 md:mt-6 max-w-full">
+              <div className="flex justify-center mt-2 sm:mt-4 max-w-full">
                 <div className="relative group/bubble inline-flex items-center justify-center animate-bubble-float max-w-full">
                   {/* Outer Pulsing Glow Aura */}
                   <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-emperor-500/40 via-amber-300/60 to-emperor-500/40 blur-xl opacity-75 group-hover/bubble:opacity-100 transition-opacity duration-500" />
 
                   {/* Glass Liquid Bubble Container */}
-                  <div className="relative inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-10 py-1.5 sm:py-2.5 rounded-full border border-emperor-400/60 bg-gradient-to-b from-obsidian-900/90 via-obsidian-850/80 to-obsidian-950/95 backdrop-blur-2xl shadow-[0_14px_35px_rgba(245,184,0,0.28),inset_0_2px_4px_rgba(255,255,255,0.35),inset_0_-3px_8px_rgba(0,0,0,0.8)]">
+                  <div className="relative inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-1.5 sm:py-2.5 rounded-full border border-emperor-400/60 bg-gradient-to-b from-obsidian-900/90 via-obsidian-850/80 to-obsidian-950/95 backdrop-blur-2xl shadow-[0_14px_35px_rgba(245,184,0,0.28),inset_0_2px_4px_rgba(255,255,255,0.35),inset_0_-3px_8px_rgba(0,0,0,0.8)]">
                     {/* Inner Bubble Highlight Reflection (Glossy specular reflection on top of bubble) */}
-                    <div className="absolute top-1 left-3 right-3 sm:left-5 sm:right-5 h-[35%] rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none" />
+                    <div className="absolute top-1 left-4 right-4 sm:left-5 sm:right-5 h-[35%] rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none" />
 
                     {/* Centered Golden Typography with extra letter spacing */}
-                    <span className="relative z-10 bg-gradient-to-r from-amber-200 via-emperor-400 to-yellow-100 bg-clip-text text-transparent font-black tracking-[0.14em] sm:tracking-[0.18em] uppercase text-xl min-[400px]:text-2xl sm:text-4xl md:text-5xl filter drop-shadow-[0_2px_12px_rgba(245,184,0,0.5)]">
+                    <span
+                      className="relative z-10 bg-gradient-to-r from-amber-200 via-emperor-400 to-yellow-100 bg-clip-text text-transparent font-black tracking-[0.14em] sm:tracking-[0.18em] uppercase text-lg sm:text-3xl md:text-4xl filter drop-shadow-[0_2px_12px_rgba(245,184,0,0.5)]"
+                      style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
+                    >
                       Builders
                     </span>
 
