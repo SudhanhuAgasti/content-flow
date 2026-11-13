@@ -134,28 +134,28 @@ export const HomePage = () => {
               <Skeleton className="h-64 w-full rounded-2xl" />
             </div>
           ) : heroArticle ? (
-            <div className="relative rounded-3xl bg-obsidian-900 border border-obsidian-800 hover:border-emperor-500/40 transition-all duration-300 overflow-hidden shadow-surface-card group">
+            <div className="relative rounded-2xl bg-obsidian-900/90 border border-obsidian-800 hover:border-emperor-500/50 transition-all duration-300 overflow-hidden shadow-surface-card hover:shadow-[0_15px_40px_rgba(245,184,0,0.08)] group backdrop-blur-sm">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-                {/* Hero Image */}
-                <div className="lg:col-span-7 relative overflow-hidden bg-obsidian-950 aspect-[16/10] lg:aspect-auto">
-                  <Link to={`/content/${heroArticle.slug}`}>
+                {/* Hero Image (Optimized Compact Aspect) */}
+                <div className="lg:col-span-6 relative overflow-hidden bg-obsidian-950 aspect-[16/9] lg:aspect-auto">
+                  <Link to={`/content/${heroArticle.slug}`} className="block w-full h-full">
                     <img
                       src={heroArticle.image?.url}
                       alt={heroArticle.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
                     />
                   </Link>
-                  <div className="absolute top-6 left-6">
-                    <Badge variant="category">
+                  <div className="absolute top-4 left-4">
+                    <Badge variant="category" className="shadow-md">
                       {heroArticle.category?.name || 'Featured Story'}
                     </Badge>
                   </div>
                 </div>
 
-                {/* Hero Text */}
-                <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
+                {/* Hero Text (Streamlined Padding) */}
+                <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center gap-3 text-xs text-obsidian-400 font-mono mb-4">
+                    <div className="flex items-center gap-2.5 text-xs text-obsidian-400 font-mono mb-3">
                       <span>{formatDate(heroArticle.publishedAt || heroArticle.createdAt)}</span>
                       <span>&bull;</span>
                       <span className="text-jade-400 font-medium">
@@ -164,23 +164,23 @@ export const HomePage = () => {
                     </div>
 
                     <Link to={`/content/${heroArticle.slug}`}>
-                      <h2 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-emperor-400 transition-colors leading-tight">
+                      <h2 className="text-xl sm:text-2xl font-black text-white group-hover:text-emperor-400 transition-colors leading-snug">
                         {heroArticle.title}
                       </h2>
                     </Link>
 
-                    <p className="mt-4 text-sm sm:text-base text-obsidian-300 leading-relaxed line-clamp-4">
+                    <p className="mt-3 text-xs sm:text-sm text-obsidian-300 leading-relaxed line-clamp-3">
                       {heroArticle.description}
                     </p>
                   </div>
 
-                  <div className="pt-8 mt-8 border-t border-obsidian-800 flex items-center justify-between">
-                    <span className="text-xs uppercase tracking-wider font-mono text-obsidian-400">
-                      Editorial Highlight
+                  <div className="pt-5 mt-6 border-t border-obsidian-800/80 flex items-center justify-between">
+                    <span className="text-[11px] uppercase tracking-wider font-mono text-obsidian-400">
+                      Top Editorial Pick
                     </span>
 
                     <Link to={`/content/${heroArticle.slug}`}>
-                      <Button variant="primary" icon={ArrowRight}>
+                      <Button variant="primary" size="sm" icon={ArrowRight}>
                         Read Story
                       </Button>
                     </Link>
@@ -258,14 +258,14 @@ export const HomePage = () => {
           ))}
         </div>
 
-        {/* Articles Grid */}
+        {/* Articles Grid (Modern Compact 3 to 4 Columns with Responsive Ergonomics) */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="space-y-4 p-6 rounded-3xl bg-obsidian-900 border border-obsidian-800">
-                <Skeleton className="h-48 w-full rounded-2xl" />
-                <Skeleton className="h-6 w-3/4" />
-                <Skeleton className="h-4 w-full" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="space-y-3 p-4 rounded-2xl bg-obsidian-900 border border-obsidian-800">
+                <Skeleton className="h-36 w-full rounded-xl" />
+                <Skeleton className="h-5 w-3/4" />
+                <Skeleton className="h-3.5 w-full" />
               </div>
             ))}
           </div>
@@ -281,13 +281,13 @@ export const HomePage = () => {
             }}
           />
         ) : recentArticles.length === 0 ? (
-          <div className="text-center py-12 bg-obsidian-900/50 border border-obsidian-800 rounded-3xl p-8">
+          <div className="text-center py-10 bg-obsidian-900/50 border border-obsidian-800 rounded-2xl p-6">
             <p className="text-sm text-obsidian-400">
               Only 1 article published currently (featured in the hero section above).
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {recentArticles.map((article) => (
               <ContentCard key={article._id} content={article} />
             ))}
