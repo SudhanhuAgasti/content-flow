@@ -54,11 +54,13 @@
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   }
 
-  .deck-card-wrapper:hover {
+  .deck-card-wrapper:hover,
+  .deck-card-wrapper:active,
+  .deck-card-wrapper:focus-within {
     transform: translateY(-12px) scale(1.02);
   }
 
-  /* Physical Stack Layer 1 (Directly underneath) */
+  /* Physical Stack Layer 1 (Directly underneath) - Active on Mobile/Touch via visible styling */
   .deck-layer-1 {
     position: absolute;
     inset: 0;
@@ -74,9 +76,22 @@
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7);
   }
 
-  .deck-card-wrapper:hover .deck-layer-1 {
+  /* Distinct visible layer offsets on mobile touch & screens */
+  @media (max-width: 768px) {
+    .deck-layer-1 {
+      transform: rotate(-2deg) translateY(3px) translateX(-3px);
+      border-color: rgba(245, 184, 0, 0.35);
+    }
+    .deck-layer-2 {
+      transform: rotate(2deg) translateY(6px) translateX(4px);
+      border-color: rgba(245, 184, 0, 0.2);
+    }
+  }
+
+  .deck-card-wrapper:hover .deck-layer-1,
+  .deck-card-wrapper:active .deck-layer-1 {
     transform: rotate(-3.5deg) translateY(4px) translateX(-4px);
-    border-color: rgba(245, 184, 0, 0.4);
+    border-color: rgba(245, 184, 0, 0.5);
   }
 
   /* Physical Stack Layer 2 (Bottom-most paper sheet) */
@@ -95,9 +110,10 @@
     box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.85);
   }
 
-  .deck-card-wrapper:hover .deck-layer-2 {
+  .deck-card-wrapper:hover .deck-layer-2,
+  .deck-card-wrapper:active .deck-layer-2 {
     transform: rotate(3deg) translateY(8px) translateX(6px);
-    border-color: rgba(245, 184, 0, 0.25);
+    border-color: rgba(245, 184, 0, 0.3);
   }
 
   .border-glass {

@@ -107,21 +107,31 @@ export const HomePage = () => {
               <span className="tracking-wide uppercase font-mono text-[11px]">Editorial Architecture & Full-Stack Mesh</span>
             </div>
 
-            {/* Drop-in Staggered Headline Words (Using High-End Syne & Space Grotesk Display Fonts) */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] drop-shadow-[0_12px_35px_rgba(0,0,0,0.98)] flex flex-wrap justify-center gap-x-4 gap-y-2 font-display">
-              <span className="inline-block animate-word-drop" style={{ animationDelay: '120ms' }}>
-                Curated
-              </span>
-              <span className="inline-block animate-word-drop text-transparent bg-clip-text bg-gradient-to-b from-white via-obsidian-100 to-obsidian-300" style={{ animationDelay: '190ms' }}>
-                Insights
-              </span>
-              <span className="inline-block animate-word-drop text-emperor-400 font-mono font-medium text-3xl sm:text-4xl md:text-5xl self-center px-1" style={{ animationDelay: '260ms' }}>
-                //
-              </span>
-              <br className="w-full hidden sm:block" />
-              <span className="inline-block animate-word-drop bg-gradient-to-r from-emperor-300 via-emperor-500 to-yellow-200 bg-clip-text text-transparent font-black tracking-tight filter drop-shadow-[0_4px_24px_rgba(245,184,0,0.35)]" style={{ animationDelay: '340ms' }}>
-                Modern Software Builders
-              </span>
+            {/* Editorial Headline: Clean 3-Tier Line Distribution */}
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12] drop-shadow-[0_12px_35px_rgba(0,0,0,0.98)] font-display flex flex-col items-center">
+              {/* Line 1: Curated Insights (Both in 1 single line together) */}
+              <div className="flex items-center justify-center gap-x-3.5 whitespace-nowrap">
+                <span className="inline-block animate-word-drop text-white" style={{ animationDelay: '120ms' }}>
+                  Curated
+                </span>
+                <span className="inline-block animate-word-drop text-transparent bg-clip-text bg-gradient-to-r from-white via-obsidian-100 to-obsidian-200" style={{ animationDelay: '200ms' }}>
+                  Insights
+                </span>
+              </div>
+
+              {/* Line 2: Modern Software */}
+              <div className="flex items-center justify-center gap-x-3 mt-1.5 whitespace-nowrap">
+                <span className="inline-block animate-word-drop text-emperor-400 font-black tracking-tight text-3xl sm:text-5xl md:text-6xl" style={{ animationDelay: '280ms' }}>
+                  Modern Software
+                </span>
+              </div>
+
+              {/* Line 3: Builders (Strictly centered at bottom) */}
+              <div className="flex justify-center mt-1">
+                <span className="inline-block animate-word-drop bg-gradient-to-r from-emperor-300 via-emperor-500 to-amber-200 bg-clip-text text-transparent font-black tracking-wider uppercase text-2xl sm:text-4xl md:text-5xl filter drop-shadow-[0_4px_20px_rgba(245,184,0,0.35)] px-4 py-0.5 rounded-2xl border border-emperor-500/25 bg-emperor-500/5 backdrop-blur-md" style={{ animationDelay: '360ms' }}>
+                  Builders
+                </span>
+              </div>
             </h1>
 
             {/* Subtitle Drop-in */}
@@ -166,11 +176,10 @@ export const HomePage = () => {
           <button
             type="button"
             onClick={() => setSelectedCategory('all')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
-              selectedCategory === 'all'
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${selectedCategory === 'all'
                 ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
                 : 'bg-obsidian-900 border border-obsidian-750 text-obsidian-300 hover:text-white hover:bg-obsidian-850'
-            }`}
+              }`}
           >
             All Topics ({recentArticles.length})
           </button>
@@ -179,11 +188,10 @@ export const HomePage = () => {
               key={cat.id}
               type="button"
               onClick={() => setSelectedCategory(cat.slug)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
-                selectedCategory === cat.slug
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${selectedCategory === cat.slug
                   ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
                   : 'bg-obsidian-900 border border-obsidian-750 text-obsidian-300 hover:text-white hover:bg-obsidian-850'
-              }`}
+                }`}
             >
               {cat.name} ({cat.publishedCount})
             </button>
@@ -241,7 +249,7 @@ export const HomePage = () => {
               Engineered for Editorial Performance & Reliability
             </h2>
             <p className="mt-3 text-base text-obsidian-300 leading-relaxed">
-              ContentFlow is an enterprise-grade CMS platform designed with strict separation of concerns, 
+              ContentFlow is an enterprise-grade CMS platform designed with strict separation of concerns,
               guaranteeing uncompromised persistence in MongoDB Atlas and real-time public synchronization.
             </p>
           </div>
