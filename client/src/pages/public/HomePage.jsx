@@ -95,25 +95,37 @@ export const HomePage = () => {
   return (
     <div className="space-y-16 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden pt-12 md:pt-16 pb-12 border-b border-obsidian-800 flex items-center justify-center min-h-[360px] md:min-h-[420px]">
+      <section className="relative overflow-hidden pt-12 md:pt-16 pb-12 border-b border-obsidian-800 flex items-center justify-center min-h-[380px] md:min-h-[440px]">
         {/* EXACT 3D Rolling Ball WebGL Canvas (Rendered strictly behind hero content) */}
         <Rolling3DBall />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 pointer-events-auto">
-          <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900/90 border border-emperor-500/30 text-emperor-400 text-xs font-semibold mb-4 backdrop-blur-md shadow-lg">
-              <Zap className="w-3.5 h-3.5 text-emperor-500" />
-              <span>Full-Stack Architecture & Editorial Engineering</span>
+          <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-4 perspective-[1000px]">
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-900/90 border border-emperor-500/40 text-emperor-400 text-xs font-semibold mb-6 backdrop-blur-xl shadow-[0_4px_20px_rgba(245,184,0,0.15)] animate-word-drop" style={{ animationDelay: '50ms' }}>
+              <Zap className="w-3.5 h-3.5 text-emperor-400 animate-pulse" />
+              <span className="tracking-wide uppercase font-mono text-[11px]">Editorial Architecture & Full-Stack Mesh</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
-              Curated Insights for <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-emperor-400 via-emperor-500 to-amber-200 bg-clip-text text-transparent">
+            {/* Drop-in Staggered Headline Words */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.12] drop-shadow-[0_8px_30px_rgba(0,0,0,0.95)] flex flex-wrap justify-center gap-x-3 gap-y-2 font-sans">
+              <span className="inline-block animate-word-drop" style={{ animationDelay: '120ms' }}>
+                Curated
+              </span>
+              <span className="inline-block animate-word-drop" style={{ animationDelay: '190ms' }}>
+                Insights
+              </span>
+              <span className="inline-block animate-word-drop text-obsidian-300 font-serif italic font-normal" style={{ animationDelay: '260ms' }}>
+                for
+              </span>
+              <br className="w-full hidden sm:block" />
+              <span className="inline-block animate-word-drop bg-gradient-to-r from-emperor-300 via-emperor-500 to-amber-200 bg-clip-text text-transparent font-black tracking-tighter filter drop-shadow-[0_2px_12px_rgba(245,184,0,0.3)]" style={{ animationDelay: '340ms' }}>
                 Modern Software Builders
               </span>
             </h1>
 
-            <p className="mt-3 text-sm sm:text-base text-obsidian-200 leading-relaxed max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            {/* Subtitle Drop-in */}
+            <p className="mt-5 text-sm sm:text-base md:text-lg text-obsidian-200 font-normal leading-relaxed max-w-2xl drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] animate-word-drop" style={{ animationDelay: '440ms' }}>
               Exploring distributed systems, cloud architecture, and modern full-stack development through production-tested engineering deep dives.
             </p>
           </div>

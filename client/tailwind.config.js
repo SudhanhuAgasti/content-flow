@@ -73,10 +73,16 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(32px) scale(0.96)' },
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
+        wordDrop: {
+          '0%': { opacity: '0', transform: 'translateY(-45px) rotateX(25deg) scale(0.9)' },
+          '70%': { transform: 'translateY(4px) rotateX(-5deg) scale(1.02)' },
+          '100%': { opacity: '1', transform: 'translateY(0) rotateX(0deg) scale(1)' },
+        },
       },
       animation: {
         shake: 'shake 0.4s ease-in-out',
         'card-rise': 'cardRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'word-drop': 'wordDrop 0.75s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards',
       },
     },
   },

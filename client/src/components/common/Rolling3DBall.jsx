@@ -7,9 +7,9 @@ import * as THREE from 'three';
  */
 function createBallTexture() {
   const canvas = document.createElement('canvas');
-  canvas.width = 2048;
-  canvas.height = 1024;
-  const ctx = canvas.getContext('2d');
+  canvas.width = 1024;
+  canvas.height = 512;
+  const ctx = canvas.getContext('2d', { alpha: false });
 
   // 1. Base vibrant neon lime-green gradient
   const baseGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -22,12 +22,11 @@ function createBallTexture() {
   // 2. Draw glossy deep obsidian/black distinctive curved patches (Reference matching)
   ctx.fillStyle = '#050706';
 
-  // Draw 2 symmetrical aerodynamic curved swathes across longitude
   const drawCurvedPatch = (centerX, centerY, scaleX, scaleY, angle) => {
     ctx.save();
     ctx.translate(centerX, centerY);
     ctx.rotate(angle);
-    ctx.scale(scaleX, scaleY);
+    ctx.scale(scaleX * 0.5, scaleY * 0.5);
 
     ctx.beginPath();
     ctx.moveTo(-250, -80);
@@ -37,7 +36,6 @@ function createBallTexture() {
     ctx.closePath();
     ctx.fill();
 
-    // Secondary connected aerodynamic flow patch
     ctx.beginPath();
     ctx.ellipse(0, 160, 160, 85, -0.2, 0, Math.PI * 2);
     ctx.fill();
@@ -46,23 +44,23 @@ function createBallTexture() {
   };
 
   // Curved black patches distributed across the sphere
-  drawCurvedPatch(512, 380, 1.4, 1.3, -0.25);
-  drawCurvedPatch(512, 700, 1.5, 1.1, 0.15);
+  drawCurvedPatch(256, 190, 1.4, 1.3, -0.25);
+  drawCurvedPatch(256, 350, 1.5, 1.1, 0.15);
 
-  drawCurvedPatch(1536, 380, 1.4, 1.3, 0.25);
-  drawCurvedPatch(1536, 700, 1.5, 1.1, -0.15);
+  drawCurvedPatch(768, 190, 1.4, 1.3, 0.25);
+  drawCurvedPatch(768, 350, 1.5, 1.1, -0.15);
 
-  // Center subtle equatorial neon band separation accent
-  ctx.lineWidth = 14;
+  ctx.lineWidth = 8;
   ctx.strokeStyle = '#020302';
   ctx.beginPath();
-  ctx.arc(1024, 512, 180, 0, Math.PI * 2);
+  ctx.arc(512, 256, 90, 0, Math.PI * 2);
   ctx.stroke();
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
-  texture.anisotropy = 16;
+  texture.generateMipmaps = true;
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
   return texture;
 }
 
@@ -88,15 +86,17 @@ export const Rolling3DBall = () => {
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
-      antialias: true,
+      antialias: false, // Turned off for instant 60/120 FPS high performance
       powerPreference: 'high-performance',
+      stencil: false,
+      depth: true,
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Lightweight DPI cap
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.BasicShadowMap; // Ultra fast shadow mapping
 
     container.appendChild(renderer.domElement);
 
@@ -109,8 +109,8 @@ export const Rolling3DBall = () => {
     const keyLight = new THREE.DirectionalLight(0xffffff, 3.8);
     keyLight.position.set(2, 6, 5);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.width = 1024;
-    keyLight.shadow.mapSize.height = 1024;
+    keyLight.shadow.mapSize.width = 512;
+    keyLight.shadow.mapSize.height = 512;
     keyLight.shadow.bias = -0.0005;
     scene.add(keyLight);
 
@@ -131,7 +131,7 @@ export const Rolling3DBall = () => {
 
     // --- 3. The 3D Sphere (Exact Reference Design) ---
     const ballRadius = 1.25;
-    const sphereGeometry = new THREE.SphereGeometry(ballRadius, 64, 64);
+    const sphereGeometry = new THREE.SphereGeometry(ballRadius, 36, 36);
     const ballTexture = createBallTexture();
 
     const sphereMaterial = new THREE.MeshPhysicalMaterial({
@@ -273,3 +273,4 @@ export const Rolling3DBall = () => {
     />
   );
 };
+
