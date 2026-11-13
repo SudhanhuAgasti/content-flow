@@ -64,8 +64,13 @@ function createBallTexture() {
   return texture;
 }
 
-export const Rolling3DBall = () => {
+export const Rolling3DBall = ({ onBallPosition }) => {
   const containerRef = useRef(null);
+  const onBallPositionRef = useRef(onBallPosition);
+
+  useEffect(() => {
+    onBallPositionRef.current = onBallPosition;
+  }, [onBallPosition]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -219,6 +224,11 @@ export const Rolling3DBall = () => {
         ballMesh.rotation.z -= (speed * direction) / ballRadius;
         ballMesh.rotation.y += 0.012 * direction;
         ballMesh.rotation.x += 0.008;
+
+        // Notify parent of ball position and direction for doll foot-kick synchronization
+        if (onBallPositionRef.current) {
+          onBallPositionRef.current(posX, direction, boundaryX);
+        }
       }
 
       renderer.render(scene, camera);

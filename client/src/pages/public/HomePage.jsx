@@ -4,6 +4,7 @@ import { contentService } from '../../services/contentService.js';
 import { categoryService } from '../../services/categoryService.js';
 import { ContentCard } from '../../components/cards/ContentCard.jsx';
 import { Rolling3DBall } from '../../components/common/Rolling3DBall.jsx';
+import { CartoonDoll } from '../../components/common/CartoonDoll.jsx';
 import { Button } from '../../components/common/Button.jsx';
 import { Badge } from '../../components/common/Badge.jsx';
 import { Skeleton } from '../../components/common/Skeleton.jsx';
@@ -38,6 +39,38 @@ export const HomePage = () => {
   // Newsletter state
   const [subscriberEmail, setSubscriberEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+
+  // Doll kick animation state (synchronized with Rolling 3D Ball)
+  const [leftDollKicking, setLeftDollKicking] = useState(false);
+  const [rightDollKicking, setRightDollKicking] = useState(false);
+  const kickTimeoutRef = React.useRef({ left: null, right: null });
+
+  const handleBallPosition = useCallback((posX, direction, boundaryX) => {
+    // Proximity threshold near boundaries
+    const threshold = boundaryX - 0.75; // Ball reaches doll kick zone
+
+    // Ball approaching Left Doll (moving left, direction < 0 and near -boundaryX)
+    if (posX <= -threshold && direction < 0) {
+      if (!leftDollKicking && !kickTimeoutRef.current.left) {
+        setLeftDollKicking(true);
+        kickTimeoutRef.current.left = setTimeout(() => {
+          setLeftDollKicking(false);
+          kickTimeoutRef.current.left = null;
+        }, 380);
+      }
+    }
+
+    // Ball approaching Right Doll (moving right, direction > 0 and near boundaryX)
+    if (posX >= threshold && direction > 0) {
+      if (!rightDollKicking && !kickTimeoutRef.current.right) {
+        setRightDollKicking(true);
+        kickTimeoutRef.current.right = setTimeout(() => {
+          setRightDollKicking(false);
+          kickTimeoutRef.current.right = null;
+        }, 380);
+      }
+    }
+  }, [leftDollKicking, rightDollKicking]);
 
   // Fetch Homepage Data
   const loadHomeData = useCallback(async () => {
@@ -95,9 +128,22 @@ export const HomePage = () => {
   return (
     <div className="space-y-16 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden pt-12 md:pt-16 pb-12 border-b border-obsidian-800 flex items-center justify-center min-h-[380px] md:min-h-[440px]">
+      <section className="relative overflow-hidden pt-12 md:pt-16 pb-12 border-b border-obsidian-800 flex items-center justify-center min-h-[420px] md:min-h-[480px]">
         {/* EXACT 3D Rolling Ball WebGL Canvas (Rendered strictly behind hero content) */}
-        <Rolling3DBall />
+        <Rolling3DBall onBallPosition={handleBallPosition} />
+
+        {/* Exactly TWO 3D Cartoon Dolls: ONE on extreme LEFT, ONE on extreme RIGHT */}
+        <div className="absolute inset-x-0 bottom-4 sm:bottom-6 pointer-events-none z-10 flex items-end justify-between px-3 sm:px-8 md:px-14 lg:px-20 max-w-7xl mx-auto">
+          {/* Doll 1: Extreme LEFT Side */}
+          <div className="transform translate-y-2 sm:translate-y-0">
+            <CartoonDoll isLeft={true} isKicking={leftDollKicking} />
+          </div>
+
+          {/* Doll 2: Extreme RIGHT Side */}
+          <div className="transform translate-y-2 sm:translate-y-0">
+            <CartoonDoll isLeft={false} isKicking={rightDollKicking} />
+          </div>
+        </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 pointer-events-auto">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-4 perspective-[1000px]">
