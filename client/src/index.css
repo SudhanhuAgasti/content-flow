@@ -19,23 +19,17 @@
     font-size: 16px !important;
   }
 
-  /* Custom subtle scrollbar */
+  /* Hide scrollbar while keeping scroll functionality clean */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 0px;
+    height: 0px;
+    display: none;
   }
 
-  ::-webkit-scrollbar-track {
-    background: #0c0e12;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #2a303f;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #f5b800;
+  html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    overflow-x: hidden;
   }
 }
 
