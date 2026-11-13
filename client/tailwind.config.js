@@ -96,6 +96,35 @@ export default {
         shimmer: {
           '100%': { transform: 'translateX(100%)' },
         },
+        danceLeft: {
+          '0%, 100%': { transform: 'translateY(0) rotate(-3deg)' },
+          '25%': { transform: 'translateY(-14px) rotate(4deg)' },
+          '50%': { transform: 'translateY(-4px) rotate(-2deg)' },
+          '75%': { transform: 'translateY(-18px) rotate(3deg)' },
+        },
+        bounceCenter: {
+          '0%, 100%': { transform: 'translateY(0) scale(1)' },
+          '50%': { transform: 'translateY(-12px) scale(1.03)' },
+        },
+        danceRight: {
+          '0%, 100%': { transform: 'translateY(0) rotate(3deg)' },
+          '25%': { transform: 'translateY(-12px) rotate(-4deg)' },
+          '50%': { transform: 'translateY(-2px) rotate(2deg)' },
+          '75%': { transform: 'translateY(-16px) rotate(-3deg)' },
+        },
+        tailWag: {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '50%': { transform: 'rotate(24deg)' },
+        },
+        noteFloat: {
+          '0%': { transform: 'translateY(0) scale(0.8)', opacity: '0' },
+          '50%': { opacity: '0.9' },
+          '100%': { transform: 'translateY(-28px) scale(1.15)', opacity: '0' },
+        },
+        orbitSpin: {
+          '0%': { transform: 'rotate(0deg) scaleY(0.38)' },
+          '100%': { transform: 'rotate(360deg) scaleY(0.38)' },
+        },
       },
       animation: {
         shake: 'shake 0.4s ease-in-out',
@@ -104,6 +133,12 @@ export default {
         'pulse-wave': 'pulseWave 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite',
         'core-ping': 'corePing 1.2s ease-in-out infinite',
         'bubble-float': 'bubbleFloat 4s ease-in-out infinite',
+        'dance-left': 'danceLeft 1.4s ease-in-out infinite',
+        'bounce-center': 'bounceCenter 1.2s ease-in-out infinite',
+        'dance-right': 'danceRight 1.5s ease-in-out infinite',
+        'tail-wag': 'tailWag 0.8s ease-in-out infinite',
+        'note-float': 'noteFloat 2s ease-in-out infinite',
+        'orbit-spin': 'orbitSpin 12s linear infinite',
       },
     },
   },
