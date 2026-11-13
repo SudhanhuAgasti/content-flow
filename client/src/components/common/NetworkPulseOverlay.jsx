@@ -50,30 +50,15 @@ export const NetworkPulseOverlay = () => {
       const isProblematic = checkNetworkCondition();
 
       if (isProblematic) {
-        // Clear any pending recovery timers
         if (fadeOutTimer) clearTimeout(fadeOutTimer);
-
-        // Require problem to persist for at least 1500ms before interrupting the user (Anti-flicker)
-        if (!debounceTimer) {
-          debounceTimer = setTimeout(() => {
-            if (checkNetworkCondition()) {
-              setIsSlowOrOffline(true);
-              setIsVisible(true);
-            }
-          }, 1500);
-        }
+        // Instant trigger on genuine offline or slow network without 1.5s delay
+        setIsSlowOrOffline(true);
+        setIsVisible(true);
       } else {
-        // Network has recovered
-        if (debounceTimer) {
-          clearTimeout(debounceTimer);
-          debounceTimer = null;
-        }
-
-        // Smooth fade out before unmounting overlay
         setIsVisible(false);
         fadeOutTimer = setTimeout(() => {
           setIsSlowOrOffline(false);
-        }, 600); // Matches CSS transition duration
+        }, 500);
       }
     };
 
@@ -171,3 +156,4 @@ export const NetworkPulseOverlay = () => {
     </div>
   );
 };
+
