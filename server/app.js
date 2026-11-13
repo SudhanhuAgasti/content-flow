@@ -28,14 +28,23 @@ app.use(
       // Allow requests with no origin (like mobile apps, curl, or Postman)
       if (!origin) return callback(null, true);
 
+      // Clean origin without trailing slashes
+      const cleanOrigin = origin.replace(/\/+$/, '');
+      const cleanClientUrl = env.CLIENT_URL ? env.CLIENT_URL.replace(/\/+$/, '') : '';
+
       const allowedOrigins = [
-        env.CLIENT_URL,
+        cleanClientUrl,
+        'https://content-flow-kohl.vercel.app',
         'http://localhost:5173',
         'http://localhost:3000',
         'http://127.0.0.1:5173',
       ];
 
-      if (allowedOrigins.includes(origin)) {
+      // Allow if explicitly in allowed list or if it's any vercel preview deployment
+      if (
+        allowedOrigins.includes(cleanOrigin) ||
+        cleanOrigin.endsWith('.vercel.app')
+      ) {
         return callback(null, true);
       }
       return callback(new Error(`CORS blocked request from origin: ${origin}`));

@@ -108,9 +108,9 @@ export const HomePage = () => {
             </div>
 
             {/* Editorial Headline: Clean Line Distribution with spacious desktop hierarchy */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.2] drop-shadow-[0_12px_35px_rgba(0,0,0,0.98)] font-display flex flex-col items-center md:gap-y-3">
-              {/* Line 1: Curated Insights (Spaced out on desktop) */}
-              <div className="flex items-center justify-center gap-x-4 md:gap-x-6 whitespace-nowrap">
+            <h1 className="text-2xl min-[400px]:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.2] drop-shadow-[0_12px_35px_rgba(0,0,0,0.98)] font-display flex flex-col items-center md:gap-y-3 w-full px-2">
+              {/* Line 1: Curated Insights (Responsive on small mobile) */}
+              <div className="flex flex-wrap items-center justify-center gap-x-2 min-[400px]:gap-x-4 md:gap-x-6">
                 <span className="inline-block animate-word-drop text-white tracking-normal md:tracking-wider" style={{ animationDelay: '120ms' }}>
                   Curated
                 </span>
@@ -120,30 +120,30 @@ export const HomePage = () => {
               </div>
 
               {/* Line 2: Modern Software */}
-              <div className="flex items-center justify-center gap-x-3.5 mt-2 md:mt-3 whitespace-nowrap">
-                <span className="inline-block animate-word-drop text-emperor-400 font-black tracking-normal md:tracking-wide text-3xl sm:text-5xl md:text-6xl lg:text-7xl" style={{ animationDelay: '280ms' }}>
+              <div className="flex flex-wrap items-center justify-center gap-x-2 min-[400px]:gap-x-3.5 mt-1.5 md:mt-3">
+                <span className="inline-block animate-word-drop text-emperor-400 font-black tracking-normal md:tracking-wide text-2xl min-[400px]:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-center" style={{ animationDelay: '280ms' }}>
                   Modern Software
                 </span>
               </div>
 
               {/* Line 3: Builders (Ultra-Attractive 3D Liquid Floating Bubble with Ambient Neon Reflection) */}
-              <div className="flex justify-center mt-4 sm:mt-5 md:mt-6">
-                <div className="relative group/bubble inline-flex items-center justify-center animate-bubble-float">
+              <div className="flex justify-center mt-3 sm:mt-5 md:mt-6 max-w-full">
+                <div className="relative group/bubble inline-flex items-center justify-center animate-bubble-float max-w-full">
                   {/* Outer Pulsing Glow Aura */}
                   <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-emperor-500/40 via-amber-300/60 to-emperor-500/40 blur-xl opacity-75 group-hover/bubble:opacity-100 transition-opacity duration-500" />
 
                   {/* Glass Liquid Bubble Container */}
-                  <div className="relative inline-flex items-center gap-3 px-7 sm:px-10 py-2 sm:py-2.5 rounded-full border border-emperor-400/60 bg-gradient-to-b from-obsidian-900/90 via-obsidian-850/80 to-obsidian-950/95 backdrop-blur-2xl shadow-[0_14px_35px_rgba(245,184,0,0.28),inset_0_2px_4px_rgba(255,255,255,0.35),inset_0_-3px_8px_rgba(0,0,0,0.8)]">
+                  <div className="relative inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-10 py-1.5 sm:py-2.5 rounded-full border border-emperor-400/60 bg-gradient-to-b from-obsidian-900/90 via-obsidian-850/80 to-obsidian-950/95 backdrop-blur-2xl shadow-[0_14px_35px_rgba(245,184,0,0.28),inset_0_2px_4px_rgba(255,255,255,0.35),inset_0_-3px_8px_rgba(0,0,0,0.8)]">
                     {/* Inner Bubble Highlight Reflection (Glossy specular reflection on top of bubble) */}
-                    <div className="absolute top-1 left-5 right-5 h-[35%] rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none" />
+                    <div className="absolute top-1 left-3 right-3 sm:left-5 sm:right-5 h-[35%] rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none" />
 
                     {/* Centered Golden Typography with extra letter spacing */}
-                    <span className="relative z-10 bg-gradient-to-r from-amber-200 via-emperor-400 to-yellow-100 bg-clip-text text-transparent font-black tracking-[0.18em] uppercase text-2xl sm:text-4xl md:text-5xl filter drop-shadow-[0_2px_12px_rgba(245,184,0,0.5)]">
+                    <span className="relative z-10 bg-gradient-to-r from-amber-200 via-emperor-400 to-yellow-100 bg-clip-text text-transparent font-black tracking-[0.14em] sm:tracking-[0.18em] uppercase text-xl min-[400px]:text-2xl sm:text-4xl md:text-5xl filter drop-shadow-[0_2px_12px_rgba(245,184,0,0.5)]">
                       Builders
                     </span>
 
                     {/* Subtle Pulsing Star Accent */}
-                    <span className="w-2.5 h-2.5 rounded-full bg-emperor-400 animate-ping shadow-[0_0_12px_#F5B800]" />
+                    <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emperor-400 animate-ping shadow-[0_0_12px_#F5B800]" />
                   </div>
                 </div>
               </div>
