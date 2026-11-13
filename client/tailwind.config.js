@@ -54,6 +54,8 @@ export default {
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Syne', 'Space Grotesk', 'sans-serif'],
+        tech: ['Space Grotesk', 'sans-serif'],
         serif: ['Playfair Display', 'Merriweather', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },

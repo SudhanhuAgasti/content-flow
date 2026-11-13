@@ -107,25 +107,25 @@ export const HomePage = () => {
               <span className="tracking-wide uppercase font-mono text-[11px]">Editorial Architecture & Full-Stack Mesh</span>
             </div>
 
-            {/* Drop-in Staggered Headline Words */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.12] drop-shadow-[0_8px_30px_rgba(0,0,0,0.95)] flex flex-wrap justify-center gap-x-3 gap-y-2 font-sans">
+            {/* Drop-in Staggered Headline Words (Using High-End Syne & Space Grotesk Display Fonts) */}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] drop-shadow-[0_12px_35px_rgba(0,0,0,0.98)] flex flex-wrap justify-center gap-x-4 gap-y-2 font-display">
               <span className="inline-block animate-word-drop" style={{ animationDelay: '120ms' }}>
                 Curated
               </span>
-              <span className="inline-block animate-word-drop" style={{ animationDelay: '190ms' }}>
+              <span className="inline-block animate-word-drop text-transparent bg-clip-text bg-gradient-to-b from-white via-obsidian-100 to-obsidian-300" style={{ animationDelay: '190ms' }}>
                 Insights
               </span>
-              <span className="inline-block animate-word-drop text-obsidian-300 font-serif italic font-normal" style={{ animationDelay: '260ms' }}>
-                for
+              <span className="inline-block animate-word-drop text-emperor-400 font-mono font-medium text-3xl sm:text-4xl md:text-5xl self-center px-1" style={{ animationDelay: '260ms' }}>
+                //
               </span>
               <br className="w-full hidden sm:block" />
-              <span className="inline-block animate-word-drop bg-gradient-to-r from-emperor-300 via-emperor-500 to-amber-200 bg-clip-text text-transparent font-black tracking-tighter filter drop-shadow-[0_2px_12px_rgba(245,184,0,0.3)]" style={{ animationDelay: '340ms' }}>
+              <span className="inline-block animate-word-drop bg-gradient-to-r from-emperor-300 via-emperor-500 to-yellow-200 bg-clip-text text-transparent font-black tracking-tight filter drop-shadow-[0_4px_24px_rgba(245,184,0,0.35)]" style={{ animationDelay: '340ms' }}>
                 Modern Software Builders
               </span>
             </h1>
 
             {/* Subtitle Drop-in */}
-            <p className="mt-5 text-sm sm:text-base md:text-lg text-obsidian-200 font-normal leading-relaxed max-w-2xl drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] animate-word-drop" style={{ animationDelay: '440ms' }}>
+            <p className="mt-5 text-sm sm:text-base md:text-lg text-obsidian-200 font-tech font-medium leading-relaxed max-w-2xl drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] animate-word-drop tracking-wide" style={{ animationDelay: '440ms' }}>
               Exploring distributed systems, cloud architecture, and modern full-stack development through production-tested engineering deep dives.
             </p>
           </div>
