@@ -133,14 +133,14 @@ export const HomePage = () => {
         <Rolling3DBall onBallPosition={handleBallPosition} />
 
         {/* Exactly TWO 3D Cartoon Dolls: ONE on extreme LEFT, ONE on extreme RIGHT */}
-        <div className="absolute inset-x-0 bottom-4 sm:bottom-6 pointer-events-none z-10 flex items-end justify-between px-3 sm:px-8 md:px-14 lg:px-20 max-w-7xl mx-auto">
+        <div className="absolute inset-x-0 bottom-10 min-[450px]:bottom-8 sm:bottom-6 pointer-events-none z-10 flex items-end justify-between px-3 sm:px-8 md:px-14 lg:px-20 max-w-7xl mx-auto">
           {/* Doll 1: Extreme LEFT Side */}
-          <div className="transform translate-y-2 sm:translate-y-0">
+          <div className="transform -translate-y-6 min-[450px]:-translate-y-3 sm:translate-y-0">
             <CartoonDoll isLeft={true} isKicking={leftDollKicking} />
           </div>
 
           {/* Doll 2: Extreme RIGHT Side */}
-          <div className="transform translate-y-2 sm:translate-y-0">
+          <div className="transform -translate-y-6 min-[450px]:-translate-y-3 sm:translate-y-0">
             <CartoonDoll isLeft={false} isKicking={rightDollKicking} />
           </div>
         </div>

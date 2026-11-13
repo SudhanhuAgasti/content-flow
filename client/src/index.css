@@ -118,5 +118,44 @@
     background-color: rgba(17, 20, 26, 0.75);
     backdrop-filter: blur(12px);
   }
+
+  /* Cute dancing arm rhythm for Cartoon Dolls */
+  @keyframes dollArmLeftDance {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-10deg) translateY(-2px);
+    }
+    50% {
+      transform: rotate(4deg) translateY(1px);
+    }
+    75% {
+      transform: rotate(-14deg) translateY(-3px);
+    }
+  }
+
+  @keyframes dollArmRightDance {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(12deg) translateY(-3px);
+    }
+    50% {
+      transform: rotate(-4deg) translateY(1px);
+    }
+    75% {
+      transform: rotate(8deg) translateY(-2px);
+    }
+  }
+
+  .animate-doll-arm-left {
+    animation: dollArmLeftDance 2s ease-in-out infinite;
+  }
+
+  .animate-doll-arm-right {
+    animation: dollArmRightDance 2s ease-in-out infinite;
+  }
 }
 

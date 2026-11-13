@@ -102,23 +102,24 @@ export const CartoonDoll = ({ isLeft = true, isKicking = false }) => {
           </g>
         </g>
 
-        {/* 3. BODY & ARMS (Facing inward / 3/4 turn towards center with continuous gentle hand sway) */}
+        {/* 3. BODY & ARMS (Facing inward with cute natural dancing groove arms, firmly attached to shoulders) */}
         <g id="body">
-          {/* Back Arm (Continuous gentle sway) */}
-          <g className="origin-[52px_122px] animate-[pulse_2.8s_ease-in-out_infinite]">
+          {/* Back Arm: Firmly attached at shoulder (50, 120), natural groove/dance */}
+          <g className="origin-[50px_120px] animate-doll-arm-left">
             <path
-              d="M52 122 Q42 142 46 160"
+              d="M50 120 C42 136, 42 148, 48 162"
               stroke={`url(#hoodieGrad-${isLeft ? 'l' : 'r'})`}
-              strokeWidth="12"
+              strokeWidth="13"
               strokeLinecap="round"
               fill="none"
             />
-            <circle cx="46" cy="162" r="5" fill={`url(#skinGrad-${isLeft ? 'l' : 'r'})`} />
+            {/* Cute cuff trim */}
+            <circle cx="48" cy="162" r="5.5" fill={`url(#skinGrad-${isLeft ? 'l' : 'r'})`} />
           </g>
 
-          {/* Main Torso (Slight 3/4 angle towards the center) */}
+          {/* Main Torso (Slight 3/4 angle towards the center, smooth seamless hoodie) */}
           <path
-            d="M48 118 C50 102, 112 104, 114 120 L108 175 C108 180, 52 180, 52 175 Z"
+            d="M46 118 C48 102, 114 104, 116 120 L108 175 C108 180, 52 180, 52 175 Z"
             fill={`url(#hoodieGrad-${isLeft ? 'l' : 'r'})`}
             stroke="#262D3B"
             strokeWidth="1.5"
@@ -145,19 +146,19 @@ export const CartoonDoll = ({ isLeft = true, isKicking = false }) => {
             strokeWidth="1"
           />
 
-          {/* Front Arm (Continuous subtle hand movement pointing slightly toward center) */}
-          <g className="origin-[106px_122px] animate-[bounce_2.4s_ease-in-out_infinite]">
+          {/* Front Arm: Firmly attached at shoulder (110, 120), natural dance rhythm pointing gently inward */}
+          <g className="origin-[110px_120px] animate-doll-arm-right">
             <path
-              d="M106 122 Q116 142 110 160"
+              d="M110 120 C118 135, 116 148, 110 162"
               stroke={`url(#hoodieGrad-${isLeft ? 'l' : 'r'})`}
-              strokeWidth="12"
+              strokeWidth="13"
               strokeLinecap="round"
               fill="none"
             />
-            {/* Hand gently gesturing / moving towards center */}
+            {/* Cute hand */}
             <circle cx="110" cy="162" r="5.5" fill={`url(#skinGrad-${isLeft ? 'l' : 'r'})`} />
             <path
-              d="M112 163 Q117 165 116 168"
+              d="M111 163 Q115 166 114 168"
               stroke={`url(#skinGrad-${isLeft ? 'l' : 'r'})`}
               strokeWidth="2.5"
               strokeLinecap="round"
