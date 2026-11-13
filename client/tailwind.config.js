@@ -89,6 +89,13 @@ export default {
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },
           '50%': { transform: 'scale(1.22)', opacity: '0.85' },
         },
+        bubbleFloat: {
+          '0%, 100%': { transform: 'translateY(0) scale(1)', filter: 'drop-shadow(0 10px 25px rgba(245,184,0,0.3))' },
+          '50%': { transform: 'translateY(-7px) scale(1.03)', filter: 'drop-shadow(0 18px 35px rgba(245,184,0,0.5))' },
+        },
+        shimmer: {
+          '100%': { transform: 'translateX(100%)' },
+        },
       },
       animation: {
         shake: 'shake 0.4s ease-in-out',
@@ -96,6 +103,7 @@ export default {
         'word-drop': 'wordDrop 0.75s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards',
         'pulse-wave': 'pulseWave 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite',
         'core-ping': 'corePing 1.2s ease-in-out infinite',
+        'bubble-float': 'bubbleFloat 4s ease-in-out infinite',
       },
     },
   },

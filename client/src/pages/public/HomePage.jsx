@@ -126,11 +126,26 @@ export const HomePage = () => {
                 </span>
               </div>
 
-              {/* Line 3: Builders (Strictly centered at bottom) */}
-              <div className="flex justify-center mt-1">
-                <span className="inline-block animate-word-drop bg-gradient-to-r from-emperor-300 via-emperor-500 to-amber-200 bg-clip-text text-transparent font-black tracking-wider uppercase text-2xl sm:text-4xl md:text-5xl filter drop-shadow-[0_4px_20px_rgba(245,184,0,0.35)] px-4 py-0.5 rounded-2xl border border-emperor-500/25 bg-emperor-500/5 backdrop-blur-md" style={{ animationDelay: '360ms' }}>
-                  Builders
-                </span>
+              {/* Line 3: Builders (Ultra-Attractive 3D Liquid Floating Bubble with Ambient Neon Reflection) */}
+              <div className="flex justify-center mt-3 sm:mt-4">
+                <div className="relative group/bubble inline-flex items-center justify-center animate-bubble-float">
+                  {/* Outer Pulsing Glow Aura */}
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-emperor-500/40 via-amber-300/60 to-emperor-500/40 blur-lg opacity-70 group-hover/bubble:opacity-100 transition-opacity duration-500" />
+
+                  {/* Glass Liquid Bubble Container */}
+                  <div className="relative inline-flex items-center gap-2 px-6 sm:px-8 py-1.5 sm:py-2 rounded-full border border-emperor-400/60 bg-gradient-to-b from-obsidian-900/90 via-obsidian-850/80 to-obsidian-950/95 backdrop-blur-2xl shadow-[0_12px_30px_rgba(245,184,0,0.25),inset_0_2px_4px_rgba(255,255,255,0.35),inset_0_-3px_8px_rgba(0,0,0,0.8)]">
+                    {/* Inner Bubble Highlight Reflection (Glossy specular reflection on top of bubble) */}
+                    <div className="absolute top-1 left-4 right-4 h-[35%] rounded-full bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
+
+                    {/* Centered Golden Typography */}
+                    <span className="relative z-10 bg-gradient-to-r from-amber-200 via-emperor-400 to-yellow-100 bg-clip-text text-transparent font-black tracking-[0.14em] uppercase text-2xl sm:text-4xl md:text-5xl filter drop-shadow-[0_2px_10px_rgba(245,184,0,0.5)]">
+                      Builders
+                    </span>
+
+                    {/* Subtle Pulsing Star Accent */}
+                    <span className="w-2 h-2 rounded-full bg-emperor-400 animate-ping shadow-[0_0_10px_#F5B800]" />
+                  </div>
+                </div>
               </div>
             </h1>
 

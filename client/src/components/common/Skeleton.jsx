@@ -1,9 +1,13 @@
 import React from 'react';
 
+/**
+ * Production-Grade Shimmer Skeleton for Smooth Perceived Performance
+ * Shows modern moving light reflections while content loads
+ */
 export const Skeleton = ({ className = '' }) => {
   return (
     <div
-      className={`animate-pulse bg-obsidian-800/80 rounded-xl ${className}`}
+      className={`relative overflow-hidden bg-obsidian-850/80 rounded-xl before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.8s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/[0.06] before:to-transparent ${className}`}
     />
   );
 };

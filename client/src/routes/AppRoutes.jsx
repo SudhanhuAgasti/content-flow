@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { HomePage } from '../pages/public/HomePage.jsx';
+import { PageLoader } from '../components/common/PageLoader.jsx';
 
 // Layouts
 import { PublicLayout } from '../layouts/PublicLayout.jsx';
@@ -73,7 +74,7 @@ const CategoryManager = lazy(() =>
 
 export const AppRoutes = () => {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<PageLoader />}>
       <Routes>
         {/* Public Editorial Web Portal */}
         <Route element={<PublicLayout />}>
