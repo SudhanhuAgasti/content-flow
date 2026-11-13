@@ -59,7 +59,8 @@ export const HomePage = () => {
         const items = contentRes.data.contents || [];
         if (items.length > 0) {
           setHeroArticle(items[0]);
-          setRecentArticles(items.slice(1));
+          // Include ALL published articles in the catalog so none are hidden or missing
+          setRecentArticles(items);
         } else {
           setHeroArticle(null);
           setRecentArticles([]);
@@ -287,9 +288,9 @@ export const HomePage = () => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {recentArticles.map((article) => (
-              <ContentCard key={article._id} content={article} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {recentArticles.map((article, index) => (
+              <ContentCard key={article._id} content={article} index={index} />
             ))}
           </div>
         )}

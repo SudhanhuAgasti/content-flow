@@ -69,9 +69,14 @@ export default {
           '20%, 60%': { transform: 'translateX(-8px)' },
           '40%, 80%': { transform: 'translateX(8px)' },
         },
+        cardRise: {
+          '0%': { opacity: '0', transform: 'translateY(32px) scale(0.96)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
       },
       animation: {
         shake: 'shake 0.4s ease-in-out',
+        'card-rise': 'cardRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
     },
   },

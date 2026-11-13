@@ -4,10 +4,11 @@ import { formatDate, calculateReadingTime } from '../../utils/formatters.js';
 import { Badge } from '../common/Badge.jsx';
 import { Clock, ArrowUpRight, Calendar } from 'lucide-react';
 
-export const ContentCard = ({ content, layout = 'vertical' }) => {
+export const ContentCard = ({ content, layout = 'vertical', index = 0 }) => {
   if (!content) return null;
 
   const readingTime = calculateReadingTime(content.content || content.description);
+  const animationDelayMs = (index % 8) * 90; // Staggered rising cascade effect
 
   if (layout === 'horizontal') {
     return (
@@ -73,10 +74,16 @@ export const ContentCard = ({ content, layout = 'vertical' }) => {
     );
   }
 
-  // Standard Vertical Card (Compact & Modern Micro-animations)
+  // Standard Vertical Card (Stacked Layered Deck with Rising Animation)
   return (
-    <article className="group relative bg-obsidian-900/90 hover:bg-obsidian-850/90 border border-obsidian-800/80 hover:border-emperor-500/50 rounded-2xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_35px_rgba(245,184,0,0.12)] flex flex-col justify-between backdrop-blur-sm">
-      {/* Subtle top glow bar on hover */}
+    <article
+      style={{ animationDelay: `${animationDelayMs}ms` }}
+      className="group relative bg-obsidian-900/90 hover:bg-obsidian-850 border border-obsidian-800/80 hover:border-emperor-500/60 rounded-2xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(245,184,0,0.14)] flex flex-col justify-between backdrop-blur-sm animate-card-rise shadow-[0_4px_16px_rgba(0,0,0,0.5),0_1px_0_rgba(255,255,255,0.04)_inset]"
+    >
+      {/* 3D Stacked Deck Under-card Effect (Card ke peeche layered card shadow look) */}
+      <div className="absolute -bottom-1 left-2 right-2 h-2 bg-obsidian-950/80 border border-obsidian-800/60 rounded-b-xl -z-10 opacity-70 group-hover:translate-y-0.5 transition-transform duration-300" />
+
+      {/* Subtle top amber glow beam on hover */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emperor-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
       <div>
