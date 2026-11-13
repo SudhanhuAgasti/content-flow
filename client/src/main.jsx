@@ -21,8 +21,8 @@ const RootApp = () => {
       .catch(() => {});
   }, []);
 
-  const content = (
-    <>
+  return (
+    <GoogleOAuthProvider clientId={googleClientId || 'dummy-client-id'}>
       <App />
       <Toaster
         position="top-right"
@@ -35,16 +35,6 @@ const RootApp = () => {
           },
         }}
       />
-    </>
-  );
-
-  if (!googleClientId) {
-    return content;
-  }
-
-  return (
-    <GoogleOAuthProvider clientId={googleClientId}>
-      {content}
     </GoogleOAuthProvider>
   );
 };

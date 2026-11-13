@@ -46,7 +46,10 @@ export const ContentCard = ({ content, layout = 'vertical', index = 0 }) => {
             </div>
 
             <Link to={`/content/${content.slug}`}>
-              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-emperor-400 transition-colors line-clamp-2 leading-snug">
+              <h3
+                className="text-xl md:text-2xl font-bold text-white group-hover:text-emperor-400 transition-colors line-clamp-2 leading-snug"
+                style={{ fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
+              >
                 {content.title}
               </h3>
             </Link>
@@ -124,7 +127,10 @@ export const ContentCard = ({ content, layout = 'vertical', index = 0 }) => {
             </div>
 
             <Link to={`/content/${content.slug}`} className="block group-hover:text-emperor-400 transition-colors">
-              <h3 className="text-base sm:text-lg font-bold text-white line-clamp-2 leading-snug group-hover:text-emperor-400 transition-colors">
+              <h3
+                className="text-base sm:text-lg font-bold text-white line-clamp-2 leading-snug group-hover:text-emperor-400 transition-colors"
+                style={{ fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
+              >
                 {content.title}
               </h3>
             </Link>
