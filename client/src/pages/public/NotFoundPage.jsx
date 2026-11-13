@@ -218,14 +218,9 @@ export const NotFoundPage = () => {
 
       {/* Main 404 Centerpiece Stage */}
       <main className="relative flex flex-col items-center justify-center my-auto z-20 py-8">
-        {/* Futuristic Glowing Orbital Rings (Reference match) */}
+        {/* Soft Floor Glow Horizon */}
         <div className="absolute w-[340px] sm:w-[580px] md:w-[740px] h-[180px] sm:h-[260px] pointer-events-none flex items-center justify-center">
-          {/* Outer Neon Green Orbit */}
-          <div className="absolute inset-0 rounded-full border-2 border-[#A3EE38]/40 shadow-[0_0_35px_rgba(163,238,56,0.35)] animate-orbit-spin" />
-          {/* Inner Golden Orbit */}
-          <div className="absolute inset-4 sm:inset-8 rounded-full border border-[#F4C542]/50 shadow-[0_0_25px_rgba(244,197,66,0.25)] animate-orbit-spin" style={{ animationDirection: 'reverse', animationDuration: '18s' }} />
-          {/* Floor Radial Glow Horizon */}
-          <div className="absolute bottom-4 w-3/4 h-20 bg-gradient-to-t from-[#A3EE38]/15 via-[#F4C542]/10 to-transparent blur-2xl rounded-full" />
+          <div className="absolute bottom-4 w-3/4 h-24 bg-gradient-to-t from-[#A3EE38]/15 via-[#F4C542]/10 to-transparent blur-3xl rounded-full" />
         </div>
 
         {/* 3D "4 0 4" Mascot Composition */}

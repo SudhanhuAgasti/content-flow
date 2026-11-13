@@ -368,22 +368,22 @@ export const HomePage = () => {
       </section>
 
       {/* 4. STEP-BY-STEP CONTACT & COMMUNICATIONS */}
-      <section id="contact" className="max-w-7xl mx-auto px-6 scroll-mt-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-obsidian-900 border border-obsidian-800 rounded-3xl p-10 md:p-14 shadow-surface-card">
+      <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 scroll-mt-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-obsidian-900 border border-obsidian-800 rounded-3xl p-6 sm:p-10 md:p-14 shadow-surface-card">
           <div className="lg:col-span-7 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-850 border border-emperor-500/30 text-emperor-400 text-xs font-semibold font-mono">
               <Mail className="w-3.5 h-3.5" />
               <span>Editorial Desk</span>
             </div>
-            <h2 className="text-3xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Stay Connected with ContentFlow
             </h2>
-            <p className="text-sm text-obsidian-300 leading-relaxed max-w-xl">
+            <p className="text-xs sm:text-sm text-obsidian-300 leading-relaxed max-w-xl">
               Subscribe to weekly architectural roundups or reach out directly to our editorial board with article proposals.
             </p>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 w-full">
             {subscribed ? (
               <div className="p-6 rounded-2xl bg-jade-950/60 border border-jade-600/40 text-center space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-jade-400 mx-auto" />
@@ -393,16 +393,16 @@ export const HomePage = () => {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="space-y-3">
-                <div className="flex gap-2">
+              <form onSubmit={handleSubscribe} className="space-y-3 w-full">
+                <div className="flex flex-col sm:flex-row gap-2.5 w-full">
                   <input
                     type="email"
                     placeholder="Enter your email address..."
                     value={subscriberEmail}
                     onChange={(e) => setSubscriberEmail(e.target.value)}
-                    className="flex-1 px-4 py-3 rounded-xl bg-obsidian-850 border border-obsidian-750 text-white placeholder-obsidian-500 text-xs focus:outline-none focus:border-emperor-500 transition-colors"
+                    className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-obsidian-850 border border-obsidian-750 text-white placeholder-obsidian-500 text-xs focus:outline-none focus:border-emperor-500 transition-colors"
                   />
-                  <Button type="submit" variant="primary" size="md" icon={Send}>
+                  <Button type="submit" variant="primary" size="md" icon={Send} className="w-full sm:w-auto shrink-0 whitespace-nowrap">
                     Join
                   </Button>
                 </div>
