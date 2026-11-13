@@ -14,15 +14,15 @@ const RootApp = () => {
     authService
       .getGoogleClientId()
       .then((res) => {
-        if (res.clientId) {
+        if (res && res.clientId) {
           setGoogleClientId(res.clientId);
         }
       })
       .catch(() => {});
   }, []);
 
-  return (
-    <GoogleOAuthProvider clientId={googleClientId || 'contentflow-auth.apps.googleusercontent.com'}>
+  const content = (
+    <>
       <App />
       <Toaster
         position="top-right"
@@ -35,6 +35,16 @@ const RootApp = () => {
           },
         }}
       />
+    </>
+  );
+
+  if (!googleClientId) {
+    return content;
+  }
+
+  return (
+    <GoogleOAuthProvider clientId={googleClientId}>
+      {content}
     </GoogleOAuthProvider>
   );
 };

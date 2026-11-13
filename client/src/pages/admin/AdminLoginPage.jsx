@@ -85,7 +85,10 @@ export const AdminLoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-obsidian-950 flex items-center justify-center p-6 relative overflow-hidden">
+    <div
+      className="min-h-screen bg-obsidian-950 flex items-center justify-center p-6 relative overflow-hidden"
+      style={{ fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
+    >
       {/* Subtle Background Radial Highlights */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-emperor-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-jade-500/5 rounded-full blur-[120px] pointer-events-none" />
@@ -169,7 +172,7 @@ export const AdminLoginPage = () => {
                   shape="pill"
                   size="large"
                   text="signin_with"
-                  width="100%"
+                  width="320"
                 />
               </div>
             )}

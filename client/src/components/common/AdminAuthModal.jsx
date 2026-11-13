@@ -76,7 +76,10 @@ export const AdminAuthModal = ({ isOpen, onClose }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Administrative Access Verification" maxWidth="max-w-md">
-      <div className={`space-y-5 ${shake ? 'animate-shake' : ''}`}>
+      <div
+        className={`space-y-5 ${shake ? 'animate-shake' : ''}`}
+        style={{ fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
+      >
         <p className="text-xs text-obsidian-300 leading-relaxed -mt-2">
           This portal requires administrator authorization. Please verify credentials to access the CMS management dashboard.
         </p>
@@ -168,7 +171,7 @@ export const AdminAuthModal = ({ isOpen, onClose }) => {
               shape="pill"
               size="medium"
               text="signin_with"
-              width="100%"
+              width="280"
             />
           )}
         </div>
