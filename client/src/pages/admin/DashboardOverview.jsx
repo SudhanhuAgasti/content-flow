@@ -148,35 +148,37 @@ export const DashboardOverview = () => {
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {statCards.map((stat) => {
+        {statCards.map((stat, idx) => {
           const Icon = stat.icon;
           return (
             <div
               key={stat.label}
-              className={`p-6 rounded-2xl bg-obsidian-900 border ${stat.borderColor} shadow-surface-card transition-all duration-200 hover:border-obsidian-600`}
+              className={`p-6 rounded-2xl bg-obsidian-900 border ${stat.borderColor} shadow-surface-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.6)] hover:border-emperor-500/40 group relative overflow-hidden`}
+              style={{ animationDelay: `${idx * 80}ms` }}
             >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-obsidian-400 font-mono">
+              <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+              <div className="flex items-center justify-between relative z-10">
+                <span className="text-xs font-bold uppercase tracking-wider text-obsidian-400 font-mono group-hover:text-white transition-colors">
                   {stat.label}
                 </span>
                 <div
-                  className={`w-10 h-10 rounded-xl ${stat.bgColor} flex items-center justify-center ${stat.color}`}
+                  className={`w-10 h-10 rounded-xl ${stat.bgColor} flex items-center justify-center ${stat.color} group-hover:scale-110 transition-transform duration-300 shadow-sm`}
                 >
                   <Icon className="w-5 h-5" />
                 </div>
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 relative z-10">
                 {loading ? (
                   <Skeleton className="h-9 w-20" />
                 ) : (
-                  <span className="text-3xl font-black text-white tracking-tight">
+                  <span className="text-3xl font-black text-white tracking-tight group-hover:text-emperor-400 transition-colors">
                     {stat.value}
                   </span>
                 )}
               </div>
 
-              <p className="mt-2 text-xs text-obsidian-400">
+              <p className="mt-2 text-xs text-obsidian-400 relative z-10 font-tech">
                 {stat.description}
               </p>
             </div>
