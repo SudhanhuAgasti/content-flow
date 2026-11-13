@@ -161,13 +161,13 @@ export const HomePage = () => {
                   className="inline-block animate-word-drop text-white tracking-normal sm:tracking-wide font-extrabold"
                   style={{ animationDelay: '120ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
                 >
-                  Curated
+                  CURATED
                 </span>
                 <span
                   className="inline-block animate-word-drop text-transparent bg-clip-text bg-gradient-to-r from-white via-obsidian-100 to-obsidian-200 tracking-normal sm:tracking-wide font-extrabold"
                   style={{ animationDelay: '200ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
                 >
-                  Insights
+                  INSIGHTS
                 </span>
               </div>
 
@@ -177,13 +177,13 @@ export const HomePage = () => {
                   className="inline-block animate-word-drop text-emperor-400 font-black tracking-normal sm:tracking-wide"
                   style={{ animationDelay: '280ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
                 >
-                  Modern
+                  MODERN
                 </span>
                 <span
                   className="inline-block animate-word-drop text-emperor-400 font-black tracking-normal sm:tracking-wide"
                   style={{ animationDelay: '340ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
                 >
-                  Software
+                  SOFTWARE
                 </span>
               </div>
 
@@ -256,8 +256,8 @@ export const HomePage = () => {
             type="button"
             onClick={() => setSelectedCategory('all')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${selectedCategory === 'all'
-                ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
-                : 'bg-obsidian-900 border border-obsidian-750 text-obsidian-300 hover:text-white hover:bg-obsidian-850'
+              ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
+              : 'bg-obsidian-900 border border-obsidian-750 text-obsidian-300 hover:text-white hover:bg-obsidian-850'
               }`}
           >
             All Topics ({recentArticles.length})
@@ -268,8 +268,8 @@ export const HomePage = () => {
               type="button"
               onClick={() => setSelectedCategory(cat.slug)}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${selectedCategory === cat.slug
-                  ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
-                  : 'bg-obsidian-900 border border-obsidian-750 text-obsidian-300 hover:text-white hover:bg-obsidian-850'
+                ? 'bg-emperor-500 text-obsidian-950 shadow-emperor-sm'
+                : 'bg-obsidian-900 border border-obsidian-750 text-obsidian-300 hover:text-white hover:bg-obsidian-850'
                 }`}
             >
               {cat.name} ({cat.publishedCount})
