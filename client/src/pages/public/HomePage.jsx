@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { contentService } from '../../services/contentService.js';
 import { categoryService } from '../../services/categoryService.js';
 import { ContentCard } from '../../components/cards/ContentCard.jsx';
+import { HeroTechAnimation } from '../../components/common/HeroTechAnimation.jsx';
 import { Button } from '../../components/common/Button.jsx';
 import { Badge } from '../../components/common/Badge.jsx';
 import { Skeleton } from '../../components/common/Skeleton.jsx';
@@ -113,6 +114,9 @@ export const HomePage = () => {
               Exploring distributed systems, cloud architecture, and modern full-stack development through production-tested engineering deep dives.
             </p>
           </div>
+
+          {/* Interactive Light-Green 3D Architectural Animation Mesh */}
+          <HeroTechAnimation />
         </div>
       </section>
 
