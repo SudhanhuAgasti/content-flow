@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { contentService } from '../../services/contentService.js';
 import { categoryService } from '../../services/categoryService.js';
 import { ContentCard } from '../../components/cards/ContentCard.jsx';
-import { HeroTechAnimation } from '../../components/common/HeroTechAnimation.jsx';
+import { Rolling3DBall } from '../../components/common/Rolling3DBall.jsx';
 import { Button } from '../../components/common/Button.jsx';
 import { Badge } from '../../components/common/Badge.jsx';
 import { Skeleton } from '../../components/common/Skeleton.jsx';
@@ -95,28 +95,28 @@ export const HomePage = () => {
   return (
     <div className="space-y-16 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden pt-8 md:pt-12 pb-8 border-b border-obsidian-800">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900 border border-emperor-500/30 text-emperor-400 text-xs font-semibold mb-4">
+      <section className="relative overflow-hidden pt-12 md:pt-16 pb-12 border-b border-obsidian-800 flex items-center justify-center min-h-[360px] md:min-h-[420px]">
+        {/* EXACT 3D Rolling Ball WebGL Canvas (Rendered strictly behind hero content) */}
+        <Rolling3DBall />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10 pointer-events-auto">
+          <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900/90 border border-emperor-500/30 text-emperor-400 text-xs font-semibold mb-4 backdrop-blur-md shadow-lg">
               <Zap className="w-3.5 h-3.5 text-emperor-500" />
               <span>Full-Stack Architecture & Editorial Engineering</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               Curated Insights for <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-emperor-400 via-emperor-500 to-amber-200 bg-clip-text text-transparent">
                 Modern Software Builders
               </span>
             </h1>
 
-            <p className="mt-3 text-sm sm:text-base text-obsidian-300 leading-relaxed max-w-2xl">
+            <p className="mt-3 text-sm sm:text-base text-obsidian-200 leading-relaxed max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               Exploring distributed systems, cloud architecture, and modern full-stack development through production-tested engineering deep dives.
             </p>
           </div>
-
-          {/* Interactive Light-Green 3D Architectural Animation Mesh */}
-          <HeroTechAnimation />
         </div>
       </section>
 
@@ -223,7 +223,7 @@ export const HomePage = () => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-850 border border-emperor-500/30 text-emperor-400 text-xs font-semibold font-mono mb-4">
               <Layers className="w-3.5 h-3.5" />
-              <span>Step 3: Platform Architecture</span>
+              <span>Platform Architecture</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
               Engineered for Editorial Performance & Reliability
@@ -274,7 +274,7 @@ export const HomePage = () => {
           <div className="lg:col-span-7 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-850 border border-emperor-500/30 text-emperor-400 text-xs font-semibold font-mono">
               <Mail className="w-3.5 h-3.5" />
-              <span>Step 4: Editorial Desk</span>
+              <span>Editorial Desk</span>
             </div>
             <h2 className="text-3xl font-black text-white tracking-tight">
               Stay Connected with ContentFlow
