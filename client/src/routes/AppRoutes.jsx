@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { PageLoader } from '../components/common/PageLoader.jsx';
+import { HomePage } from '../pages/public/HomePage.jsx';
 
 // Layouts
 import { PublicLayout } from '../layouts/PublicLayout.jsx';
@@ -9,10 +9,7 @@ import { AdminLayout } from '../layouts/AdminLayout.jsx';
 // Route Guards
 import { ProtectedRoute } from './ProtectedRoute.jsx';
 
-// Code-Split Public Routes
-const HomePage = lazy(() =>
-  import('../pages/public/HomePage.jsx').then((m) => ({ default: m.HomePage }))
-);
+// Code-Split Secondary Routes
 const ContentListPage = lazy(() =>
   import('../pages/public/ContentListPage.jsx').then((m) => ({
     default: m.ContentListPage,
@@ -76,7 +73,7 @@ const CategoryManager = lazy(() =>
 
 export const AppRoutes = () => {
   return (
-    <Suspense fallback={<PageLoader />}>
+    <Suspense fallback={null}>
       <Routes>
         {/* Public Editorial Web Portal */}
         <Route element={<PublicLayout />}>
