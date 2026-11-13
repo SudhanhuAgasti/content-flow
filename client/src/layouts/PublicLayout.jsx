@@ -42,27 +42,20 @@ export const PublicLayout = () => {
   }, []);
 
   const navLinks = [
-    { to: '/', label: 'Home', anchor: null },
-    { to: '/content', label: 'All Articles', anchor: '#articles' },
-    { to: '/about', label: 'About', anchor: '#about' },
-    { to: '/contact', label: 'Contact', anchor: '#contact' },
+    { to: '/', label: 'Home' },
+    { to: '/content', label: 'All Articles' },
+    { to: '/about', label: 'About' },
+    { to: '/contact', label: 'Contact' },
   ];
 
-  const handleNavClick = (e, link) => {
-    if (location.pathname === '/' && link.anchor) {
-      e.preventDefault();
-      const targetElement = document.querySelector(link.anchor);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setMobileMenuOpen(false);
-      }
-    }
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-obsidian-950 text-obsidian-100 flex flex-col selection:bg-emperor-500 selection:text-obsidian-950">
-      {/* Top Main Navigation Bar */}
-      <header className="sticky top-0 z-50 bg-obsidian-900/80 backdrop-blur-md border-b border-obsidian-800/80">
+      {/* Top Main Navigation Bar - Constant Fixed Header across laptop, tablet & mobile */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-obsidian-950/95 backdrop-blur-xl border-b border-obsidian-800/80 shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Custom Brand Logo */}
           <BrandLogo size="md" />
@@ -73,7 +66,7 @@ export const PublicLayout = () => {
               <NavLink
                 key={link.to}
                 to={link.to}
-                onClick={(e) => handleNavClick(e, link)}
+                onClick={handleNavClick}
                 className={({ isActive }) =>
                   `text-sm font-semibold tracking-wide transition-colors ${
                     isActive
@@ -209,8 +202,8 @@ export const PublicLayout = () => {
         )}
       </header>
 
-      {/* Main Public Content Slot */}
-      <main className="flex-1">
+      {/* Main Public Content Slot (pt-20 offsets the fixed h-20 header) */}
+      <main className="flex-1 pt-20">
         <Outlet />
       </main>
 
