@@ -26,7 +26,8 @@
   }
 
   /* Light mode theme overrides for obsidian palettes */
-  html.light .bg-obsidian-950 {
+  html.light .bg-obsidian-950,
+  html.light .bg-obsidian-950\/95 {
     background-color: #FFFFFF !important;
   }
   html.light .bg-obsidian-900 {
@@ -42,6 +43,7 @@
     background-color: #E2E8F0 !important;
   }
   html.light .border-obsidian-800,
+  html.light .border-obsidian-800\/80,
   html.light .border-obsidian-750,
   html.light .border-obsidian-700 {
     border-color: #E2E8F0 !important;
@@ -58,8 +60,28 @@
   html.light .text-obsidian-400 {
     color: #64748B !important;
   }
+  html.light .text-obsidian-500 {
+    color: #64748B !important;
+  }
   html.light .text-white {
     color: #0F172A !important;
+  }
+
+  /* Specific Light Mode Navbar & NavLink text clarity */
+  html.light header nav a:not(.text-emperor-400),
+  html.light header button:not(.bg-emperor-500) {
+    color: #334155 !important;
+  }
+  html.light header nav a:hover,
+  html.light header button:hover {
+    color: #0F172A !important;
+  }
+  html.light header a.text-emperor-400,
+  html.light header a.text-emperor-500 {
+    color: #D99B00 !important;
+  }
+  html.light header {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06) !important;
   }
   /* Preserve white text for primary solid buttons, badges, and brand text on dark surfaces */
   html.light .bg-obsidian-950 .text-white,
