@@ -7,11 +7,68 @@
     color-scheme: dark;
   }
 
+  html.light {
+    color-scheme: light;
+  }
+
   body {
     background-color: #07080a;
     color: #f1f4f9;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     touch-action: pan-x pan-y;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Light mode root background and text color overrides */
+  html.light body {
+    background-color: #F8FAFC;
+    color: #0F172A;
+  }
+
+  /* Light mode theme overrides for obsidian palettes */
+  html.light .bg-obsidian-950 {
+    background-color: #FFFFFF !important;
+  }
+  html.light .bg-obsidian-900 {
+    background-color: #F1F5F9 !important;
+  }
+  html.light .bg-obsidian-850 {
+    background-color: #E2E8F0 !important;
+  }
+  html.light .bg-obsidian-800 {
+    background-color: #CBD5E1 !important;
+  }
+  html.light .bg-obsidian-750 {
+    background-color: #E2E8F0 !important;
+  }
+  html.light .border-obsidian-800,
+  html.light .border-obsidian-750,
+  html.light .border-obsidian-700 {
+    border-color: #E2E8F0 !important;
+  }
+  html.light .text-obsidian-100 {
+    color: #0F172A !important;
+  }
+  html.light .text-obsidian-200 {
+    color: #1E293B !important;
+  }
+  html.light .text-obsidian-300 {
+    color: #334155 !important;
+  }
+  html.light .text-obsidian-400 {
+    color: #64748B !important;
+  }
+  html.light .text-white {
+    color: #0F172A !important;
+  }
+  /* Preserve white text for primary solid buttons and badges */
+  html.light .bg-emperor-500,
+  html.light .bg-emperor-500 * {
+    color: #07080A !important;
+  }
+  html.light .badge-white-text,
+  html.light .btn-primary-text {
+    color: #FFFFFF !important;
   }
 
   /* Prevent browser input auto-zoom on mobile devices */

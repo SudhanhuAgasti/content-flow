@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 import { BrandLogo } from '../components/common/BrandLogo.jsx';
 import { Button } from '../components/common/Button.jsx';
+import { ThemeToggle } from '../components/common/ThemeToggle.jsx';
 import { AdminAuthModal } from '../components/common/AdminAuthModal.jsx';
 import { categoryService } from '../services/categoryService.js';
 import {
@@ -53,9 +54,9 @@ export const PublicLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-obsidian-950 text-obsidian-100 flex flex-col selection:bg-emperor-500 selection:text-obsidian-950">
+    <div className="min-h-screen bg-obsidian-950 text-obsidian-100 flex flex-col selection:bg-emperor-500 selection:text-obsidian-950 transition-colors duration-300">
       {/* Top Main Navigation Bar - Constant Fixed Header across laptop, tablet & mobile */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-obsidian-950/95 backdrop-blur-xl border-b border-obsidian-800/80 shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-obsidian-950/95 backdrop-blur-xl border-b border-obsidian-800/80 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Custom Brand Logo */}
           <BrandLogo size="md" />
@@ -112,7 +113,7 @@ export const PublicLayout = () => {
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <Link to="/content">
               <button
                 type="button"
@@ -122,6 +123,9 @@ export const PublicLayout = () => {
                 <Search className="w-4 h-4" />
               </button>
             </Link>
+
+            {/* Dark / Light Mode Switcher */}
+            <ThemeToggle />
 
             <Button
               variant="outline"
@@ -133,14 +137,17 @@ export const PublicLayout = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-obsidian-300 hover:text-white"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-emperor-500" />}
-          </button>
+          {/* Mobile Right Actions: Theme Toggle + Menu */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-obsidian-300 hover:text-white"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-emperor-500" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation Drawer */}

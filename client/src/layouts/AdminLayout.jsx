@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { BrandLogo } from '../components/common/BrandLogo.jsx';
+import { ThemeToggle } from '../components/common/ThemeToggle.jsx';
 import {
   LayoutDashboard,
   FileText,
@@ -66,13 +67,16 @@ export const AdminLayout = () => {
       <header className="md:hidden flex items-center justify-between px-4 py-3 bg-obsidian-900 border-b border-obsidian-800 sticky top-0 z-40">
         <BrandLogo size="sm" to="/admin/dashboard" subtitle="Admin Control" />
 
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 rounded-lg text-obsidian-300 hover:text-white hover:bg-obsidian-800"
-        >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-lg text-obsidian-300 hover:text-white hover:bg-obsidian-800"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </header>
 
       {/* Sidebar Navigation */}
@@ -84,6 +88,7 @@ export const AdminLayout = () => {
         {/* Brand Banner */}
         <div className="p-6 border-b border-obsidian-800/80 hidden md:flex items-center justify-between">
           <BrandLogo size="md" to="/admin/dashboard" subtitle="Master Control" />
+          <ThemeToggle />
         </div>
 
         {/* Live Status Pill */}

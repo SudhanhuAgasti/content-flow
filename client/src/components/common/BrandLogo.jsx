@@ -78,12 +78,12 @@ export const BrandLogo = ({
       {showText && (
         <div className="flex flex-col leading-tight">
           <span
-            className={`font-black tracking-tight text-white font-sans ${
+            className={`font-black tracking-tight text-white dark:text-white light:text-obsidian-900 group-hover:text-emperor-500 transition-colors font-sans ${
               textSizes[size] || textSizes.md
             }`}
             style={{ fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
           >
-            Content<span className="text-emperor-500">Flow</span>
+            <span className="text-obsidian-900 dark:text-white">Content</span><span className="text-emperor-500">Flow</span>
           </span>
           {subtitle && (
             <span className="text-[10px] font-mono uppercase tracking-widest text-obsidian-400">
