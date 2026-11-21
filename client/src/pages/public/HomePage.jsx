@@ -164,7 +164,7 @@ export const HomePage = () => {
                   CURATED
                 </span>
                 <span
-                  className="inline-block animate-word-drop text-transparent bg-clip-text bg-gradient-to-r from-white via-obsidian-100 to-obsidian-200 tracking-normal sm:tracking-wide font-extrabold"
+                  className="inline-block animate-word-drop text-white bg-clip-text bg-gradient-to-r from-white via-obsidian-100 to-obsidian-200 tracking-normal sm:tracking-wide font-extrabold"
                   style={{ animationDelay: '200ms', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
                 >
                   INSIGHTS
