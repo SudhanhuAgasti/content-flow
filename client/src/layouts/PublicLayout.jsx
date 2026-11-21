@@ -55,21 +55,21 @@ export const PublicLayout = () => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 text-obsidian-100 flex flex-col selection:bg-emperor-500 selection:text-obsidian-950 transition-colors duration-300">
-      {/* Top Main Navigation Bar - Constant Fixed Header across laptop, tablet & mobile */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-obsidian-950/95 backdrop-blur-xl border-b border-obsidian-800/80 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      {/* Top Main Navigation Bar - Slim Modern Fixed Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-obsidian-950/95 backdrop-blur-xl border-b border-obsidian-800/80 shadow-[0_4px_25px_rgba(0,0,0,0.6)] transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
           {/* Custom Brand Logo */}
-          <BrandLogo size="md" />
+          <BrandLogo size="sm" />
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `text-sm font-semibold tracking-wide transition-colors ${
+                  `text-xs lg:text-sm font-semibold tracking-wide transition-colors ${
                     isActive
                       ? 'text-emperor-400 font-bold'
                       : 'text-obsidian-300 hover:text-white'
@@ -85,7 +85,7 @@ export const PublicLayout = () => {
               <div className="relative group">
                 <button
                   type="button"
-                  className="flex items-center gap-1.5 text-sm font-semibold text-obsidian-300 hover:text-white transition-colors cursor-pointer py-2"
+                  className="flex items-center gap-1.5 text-xs lg:text-sm font-semibold text-obsidian-300 hover:text-white transition-colors cursor-pointer py-1"
                 >
                   <span>Categories</span>
                   <ChevronDown className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform" />
@@ -99,6 +99,7 @@ export const PublicLayout = () => {
                         key={cat.id}
                         to={`/category/${cat.slug}`}
                         className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-obsidian-300 hover:text-white hover:bg-obsidian-800 transition-colors"
+                        onClick={handleNavClick}
                       >
                         <span className="truncate">{cat.name}</span>
                         <span className="text-[10px] text-jade-400 font-mono bg-jade-950/60 px-1.5 py-0.5 rounded border border-jade-600/30">
@@ -113,14 +114,14 @@ export const PublicLayout = () => {
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2.5">
             <Link to="/content">
               <button
                 type="button"
-                className="p-2.5 rounded-xl bg-obsidian-850 hover:bg-obsidian-800 border border-obsidian-750 text-obsidian-300 hover:text-white transition-colors"
+                className="p-2 rounded-xl bg-obsidian-850 hover:bg-obsidian-800 border border-obsidian-750 text-obsidian-300 hover:text-white transition-colors"
                 title="Search Articles"
               >
-                <Search className="w-4 h-4" />
+                <Search className="w-3.5 h-3.5" />
               </button>
             </Link>
 
@@ -132,6 +133,7 @@ export const PublicLayout = () => {
               size="sm"
               icon={Shield}
               onClick={() => setAuthModalOpen(true)}
+              className="py-1.5 px-3 text-xs"
             >
               Admin Portal
             </Button>
@@ -143,17 +145,17 @@ export const PublicLayout = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-obsidian-850 border border-obsidian-750 text-obsidian-300 hover:text-white"
+              className="p-1.5 rounded-xl bg-obsidian-850 border border-obsidian-750 text-obsidian-300 hover:text-white"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-emperor-500" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5 text-emperor-500" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-obsidian-900 border-b border-obsidian-800 px-6 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200">
-            <nav className="flex flex-col space-y-3">
+          <div className="md:hidden bg-obsidian-900 border-b border-obsidian-800 px-6 py-5 space-y-4 animate-in slide-in-from-top-4 duration-200">
+            <nav className="flex flex-col space-y-2.5">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.to}
@@ -182,6 +184,7 @@ export const PublicLayout = () => {
                         key={cat.id}
                         to={`/category/${cat.slug}`}
                         className="px-3 py-2 rounded-xl bg-obsidian-850 text-xs font-medium text-obsidian-300 hover:text-white truncate"
+                        onClick={handleNavClick}
                       >
                         {cat.name}
                       </Link>
@@ -209,8 +212,8 @@ export const PublicLayout = () => {
         )}
       </header>
 
-      {/* Main Public Content Slot (pt-20 offsets the fixed h-20 header) */}
-      <main className="flex-1 pt-20">
+      {/* Main Public Content Slot (pt-14 sm:pt-16 offsets the slim header) */}
+      <main className="flex-1 pt-14 sm:pt-16">
         <Outlet />
       </main>
 
