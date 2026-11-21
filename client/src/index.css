@@ -61,7 +61,16 @@
   html.light .text-white {
     color: #0F172A !important;
   }
-  /* Preserve white text for primary solid buttons and badges */
+  /* Preserve white text for primary solid buttons, badges, and brand text on dark surfaces */
+  html.light .bg-obsidian-950 .text-white,
+  html.light .bg-obsidian-900 .text-white,
+  html.light .bg-obsidian-850 .text-white,
+  html.light .brand-logo-text-content {
+    color: #0F172A !important;
+  }
+  html:not(.light) .brand-logo-text-content {
+    color: #FFFFFF !important;
+  }
   html.light .bg-emperor-500,
   html.light .bg-emperor-500 * {
     color: #07080A !important;
