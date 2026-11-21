@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext.jsx';
 
 /**
  * Bespoke ContentFlow Brand Emblem & Monogram
@@ -15,6 +16,8 @@ export const BrandLogo = ({
   subtitle = 'Editorial CMS',
   className = '',
 }) => {
+  const { isDark } = useTheme();
+
   const iconSizes = {
     sm: 'w-8 h-8',
     md: 'w-10 h-10',
@@ -83,11 +86,14 @@ export const BrandLogo = ({
             }`}
             style={{ fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
           >
-            <span className="brand-logo-text-content">Content</span>
+            <span style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>Content</span>
             <span className="text-emperor-500">Flow</span>
           </span>
           {subtitle && (
-            <span className="text-[10px] font-mono uppercase tracking-widest text-obsidian-400">
+            <span
+              className="text-[10px] font-mono uppercase tracking-widest"
+              style={{ color: isDark ? '#8B95AC' : '#64748B' }}
+            >
               {subtitle}
             </span>
           )}
