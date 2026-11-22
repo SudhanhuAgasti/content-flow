@@ -5,6 +5,8 @@ import { ContentCard } from '../../components/cards/ContentCard.jsx';
 import { Badge } from '../../components/common/Badge.jsx';
 import { Button } from '../../components/common/Button.jsx';
 import { Skeleton } from '../../components/common/Skeleton.jsx';
+import { ArticleAudioPlayer } from '../../components/common/ArticleAudioPlayer.jsx';
+import { ArticleAiSummary } from '../../components/common/ArticleAiSummary.jsx';
 import { formatDate, calculateReadingTime } from '../../utils/formatters.js';
 import {
   ArrowLeft,
@@ -176,6 +178,23 @@ export const ContentDetailPage = () => {
           src={content.image?.url}
           alt={content.title}
           className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* AI Executive Summary & Audio Player Suite */}
+      <div className="space-y-4">
+        {/* Audio Player: Speech Narration */}
+        <ArticleAudioPlayer
+          title={content.title}
+          content={content.content}
+          readingTime={readingTime}
+        />
+
+        {/* AI Key Insights Briefing */}
+        <ArticleAiSummary
+          title={content.title}
+          description={content.description}
+          content={content.content}
         />
       </div>
 
