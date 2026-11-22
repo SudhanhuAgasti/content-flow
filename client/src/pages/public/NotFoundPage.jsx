@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ArrowUpRight, Music2, Sparkles } from 'lucide-react';
+import { Home, ArrowUpRight, Music2 } from 'lucide-react';
 
 /**
  * Animated 404 Mascot: Left Dancing Robot Character

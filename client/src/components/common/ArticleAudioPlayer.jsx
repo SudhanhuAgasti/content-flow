@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause, RotateCcw, Volume2, Sparkles, FastForward } from 'lucide-react';
+import { Play, Pause, RotateCcw, Volume2, Headphones, FastForward } from 'lucide-react';
 
 /**
  * ArticleAudioPlayer
@@ -128,8 +128,8 @@ export const ArticleAudioPlayer = ({ title, content, readingTime = '3 min' }) =>
 
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-emperor-400 flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-emperor-400" />
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-emperor-400 flex items-center gap-1.5">
+                <Headphones className="w-3.5 h-3.5 text-emperor-400" />
                 Listen to Article
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-obsidian-800 text-obsidian-300 border border-obsidian-700">

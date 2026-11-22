@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Bot, ChevronDown, ChevronUp, Copy, Check } from 'lucide-react';
+import { Cpu, Bot, ChevronDown, ChevronUp, Copy, Check } from 'lucide-react';
 
 /**
  * ArticleAiSummary
@@ -42,7 +42,7 @@ export const ArticleAiSummary = ({ title, description, content }) => {
       >
         <div className="flex items-center gap-2.5">
           <div className="w-7 h-7 rounded-lg bg-emperor-500/20 text-emperor-400 flex items-center justify-center shrink-0">
-            <Sparkles className="w-4 h-4" />
+            <Cpu className="w-4 h-4" />
           </div>
           <span className="text-xs font-mono font-bold uppercase tracking-wider text-emperor-400">
             Executive AI Summary & Key Takeaways

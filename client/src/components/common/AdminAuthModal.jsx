@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext.jsx';
 import { Modal } from './Modal.jsx';
 import { Input } from './Input.jsx';
 import { Button } from './Button.jsx';
-import { Lock, Mail, Eye, EyeOff, Shield, AlertCircle, ArrowRight, Sparkles } from 'lucide-react';
+import { Lock, Mail, Eye, EyeOff, Shield, AlertCircle, ArrowRight } from 'lucide-react';
 import { GoogleLogin } from '@react-oauth/google';
 import { toast } from 'sonner';
 
