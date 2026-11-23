@@ -1,104 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext.jsx';
 
 /**
- * Bespoke ContentFlow Brand Emblem & Monogram
- * Designed specifically for ContentFlow:
- * - Interlocking geometric dual-flow (C + F)
- * - Rich Emperor Yellow (#F5B800) + Light Emerald Green (#10B981) + Obsidian Black
- * - No generic AI or Gemini stars
+ * Modern High-Energy ContentFlow Brand Logo
+ * Styled with lime-green to emperor-yellow gradient, aerodynamic wave & growth arrow.
+ * Custom transparent typography + monogram.
  */
 export const BrandLogo = ({
   size = 'md',
   showText = true,
   to = '/',
-  subtitle = 'Editorial CMS',
+  subtitle = 'EDITORIAL CMS',
   className = '',
 }) => {
-  const { isDark } = useTheme();
-
-  const iconSizes = {
-    sm: 'w-8 h-8',
-    md: 'w-10 h-10',
-    lg: 'w-12 h-12',
-    xl: 'w-16 h-16',
+  // Height sizing based on context
+  const heightStyles = {
+    sm: 'h-8 sm:h-9',
+    md: 'h-9 sm:h-11',
+    lg: 'h-12 sm:h-14',
+    xl: 'h-16 sm:h-20',
   };
 
-  const textSizes = {
-    sm: 'text-base',
-    md: 'text-xl',
-    lg: 'text-2xl',
-    xl: 'text-3xl',
+  const emblemSizes = {
+    sm: 'w-7 h-7',
+    md: 'w-9 h-9',
+    lg: 'w-11 h-11',
+    xl: 'w-14 h-14',
   };
 
   return (
     <Link
       to={to}
-      className={`inline-flex items-center gap-3 select-none group transition-transform active:scale-95 ${className}`}
+      className={`inline-flex items-center gap-2.5 select-none group transition-transform active:scale-95 ${className}`}
     >
-      {/* Handcrafted Vector Monogram */}
-      <div
-        className={`${iconSizes[size] || iconSizes.md} rounded-2xl bg-obsidian-900 border border-obsidian-750 p-2 shadow-sm shadow-obsidian-950 flex items-center justify-center shrink-0 group-hover:border-emperor-500/50 transition-colors relative overflow-hidden`}
-      >
-        <svg
-          viewBox="0 0 36 36"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-        >
-          {/* Inner dark frame */}
-          <rect
-            x="2"
-            y="2"
-            width="32"
-            height="32"
-            rx="8"
-            fill="#0C0E12"
-            stroke="#262B38"
-            strokeWidth="1.2"
+      {/* Brand Logo with Aerodynamic Wave & Play Emblem */}
+      <div className="relative flex items-center">
+        {showText ? (
+          <img
+            src="/contentflow-logo.png"
+            alt="ContentFlow"
+            className={`${heightStyles[size] || heightStyles.md} w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(163,238,56,0.25)] group-hover:brightness-110 transition-all`}
           />
-          {/* C-Flow Arc in Emperor Yellow */}
-          <path
-            d="M25 11C21.5 8 13.5 8.5 10 13.5C6.5 18.5 7.5 24.5 12.5 27C17.5 29.5 22.5 27 25 24"
-            stroke="#F5B800"
-            strokeWidth="3.2"
-            strokeLinecap="round"
+        ) : (
+          <img
+            src="/contentflow-emblem.png"
+            alt="ContentFlow"
+            className={`${emblemSizes[size] || emblemSizes.md} object-contain filter drop-shadow-[0_2px_8px_rgba(163,238,56,0.3)] group-hover:scale-105 transition-all`}
           />
-          {/* F-Flow Stream in Emerald Light Green */}
-          <path
-            d="M13 18H27"
-            stroke="#10B981"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
-          {/* Precise Editorial Anchor Nodes */}
-          <circle cx="25.5" cy="11" r="2.2" fill="#F5B800" />
-          <circle cx="13" cy="25.5" r="2" fill="#10B981" />
-        </svg>
+        )}
       </div>
-
-      {showText && (
-        <div className="flex flex-col leading-tight">
-          <span
-            className={`font-black tracking-tight group-hover:text-emperor-500 transition-colors font-sans ${
-              textSizes[size] || textSizes.md
-            }`}
-            style={{ fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
-          >
-            <span style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>Content</span>
-            <span className="text-emperor-500">Flow</span>
-          </span>
-          {subtitle && (
-            <span
-              className="text-[10px] font-mono uppercase tracking-widest"
-              style={{ color: isDark ? '#8B95AC' : '#64748B' }}
-            >
-              {subtitle}
-            </span>
-          )}
-        </div>
-      )}
     </Link>
   );
 };
