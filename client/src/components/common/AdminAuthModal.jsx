@@ -4,8 +4,8 @@ import { useAuth } from '../../context/AuthContext.jsx';
 import { Modal } from './Modal.jsx';
 import { Input } from './Input.jsx';
 import { Button } from './Button.jsx';
+import { OAuthButtonGroup } from './OAuthButtonGroup.jsx';
 import { Lock, Mail, Eye, EyeOff, Shield, AlertCircle, ArrowRight } from 'lucide-react';
-import { GoogleLogin } from '@react-oauth/google';
 import { toast } from 'sonner';
 
 export const AdminAuthModal = ({ isOpen, onClose }) => {
@@ -157,24 +157,18 @@ export const AdminAuthModal = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* Google OAuth Component */}
-        <div className="flex justify-center">
-          {googleLoading ? (
-            <div className="py-2 text-xs text-emperor-400 font-mono animate-pulse">
-              Verifying Google Account...
-            </div>
-          ) : (
-            <GoogleLogin
-              onSuccess={handleGoogleSuccess}
-              onError={handleGoogleError}
-              theme="filled_black"
-              shape="pill"
-              size="medium"
-              text="signin_with"
-              width="280"
-            />
-          )}
-        </div>
+        {/* OAuth Buttons Group (Google + GitHub) */}
+        <OAuthButtonGroup
+          googleLoading={googleLoading}
+          onGoogleSuccess={(res) => {
+            if (res.credential) {
+              handleGoogleSuccess(res);
+            } else if (res.access_token) {
+              toast.info('Google access token received');
+            }
+          }}
+          onGoogleError={(err) => triggerError(err)}
+        />
 
         {/* Quick helper button */}
         <div className="pt-3 border-t border-obsidian-800 flex items-center justify-between text-xs">

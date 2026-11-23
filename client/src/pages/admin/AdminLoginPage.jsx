@@ -7,8 +7,8 @@ import { useAuth } from '../../context/AuthContext.jsx';
 import { BrandLogo } from '../../components/common/BrandLogo.jsx';
 import { Input } from '../../components/common/Input.jsx';
 import { Button } from '../../components/common/Button.jsx';
+import { OAuthButtonGroup } from '../../components/common/OAuthButtonGroup.jsx';
 import { Lock, Mail, Eye, EyeOff, ShieldCheck, KeyRound, ArrowRight } from 'lucide-react';
-import { GoogleLogin } from '@react-oauth/google';
 import { toast } from 'sonner';
 
 const loginSchema = z.object({
@@ -157,26 +157,18 @@ export const AdminLoginPage = () => {
             </div>
           </div>
 
-          {/* Google Sign-in Trigger */}
-          <div className="flex flex-col items-center justify-center">
-            {googleLoading ? (
-              <div className="py-2.5 text-xs text-emperor-400 font-mono animate-pulse">
-                Verifying Google Credentials...
-              </div>
-            ) : (
-              <div className="w-full flex justify-center">
-                <GoogleLogin
-                  onSuccess={handleGoogleSuccess}
-                  onError={handleGoogleError}
-                  theme="filled_black"
-                  shape="pill"
-                  size="large"
-                  text="signin_with"
-                  width="320"
-                />
-              </div>
-            )}
-          </div>
+          {/* Modern OAuth Buttons: Google + GitHub */}
+          <OAuthButtonGroup
+            googleLoading={googleLoading}
+            onGoogleSuccess={(res) => {
+              if (res.credential) {
+                handleGoogleSuccess(res);
+              } else if (res.access_token) {
+                toast.info('Google access token received');
+              }
+            }}
+            onGoogleError={(err) => toast.error(err)}
+          />
 
           {/* Quick Demo Helper */}
           <div className="mt-8 pt-6 border-t border-obsidian-800 text-center">
