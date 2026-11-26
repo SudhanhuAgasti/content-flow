@@ -30,17 +30,17 @@ export const ReadingProgressBar = ({ targetRef }) => {
 
   return (
     <>
-      {/* 1. Top Progress Track - 3.5px height with strong glow for high visibility on all mobile & desktop screens */}
-      <div className="fixed top-0 left-0 right-0 h-[3.5px] bg-obsidian-900/40 z-[9999] pointer-events-none">
+      {/* 1. Top Progress Track - Sits at the very top on mobile, and flush right at the top/beneath laptop header */}
+      <div className="fixed top-0 md:top-0 left-0 right-0 h-[3.5px] bg-obsidian-900/40 z-[9999] pointer-events-none">
         <div
           className="h-full bg-gradient-to-r from-jade-400 via-emperor-500 to-amber-300 transition-all duration-150 ease-out shadow-[0_0_14px_rgba(245,184,0,0.85)]"
           style={{ width: `${completion}%` }}
         />
       </div>
 
-      {/* 2. Floating Minimal Pill - Visible on BOTH Mobile & Desktop when reader scrolls */}
+      {/* 2. Floating Minimal Pill - On laptop raised higher (bottom-24) so it stays neatly above the Ask Copilot button, while on mobile sits at bottom-4 */}
       {completion > 2 && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9998] flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-obsidian-900/95 border border-obsidian-750/90 backdrop-blur-xl shadow-2xl text-[11px] sm:text-xs font-mono select-none animate-in fade-in slide-in-from-bottom-2 duration-300">
+        <div className="fixed bottom-4 right-4 md:bottom-24 md:right-6 z-[9980] flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-obsidian-900/95 border border-obsidian-750/90 backdrop-blur-xl shadow-2xl text-[11px] sm:text-xs font-mono select-none animate-in fade-in slide-in-from-bottom-2 duration-300">
           <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emperor-500 animate-pulse" />
           <span className="text-obsidian-200 font-semibold">{Math.round(completion)}% read</span>
         </div>
