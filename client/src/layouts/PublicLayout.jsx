@@ -4,6 +4,7 @@ import { BrandLogo } from '../components/common/BrandLogo.jsx';
 import { Button } from '../components/common/Button.jsx';
 import { ThemeToggle } from '../components/common/ThemeToggle.jsx';
 import { AdminAuthModal } from '../components/common/AdminAuthModal.jsx';
+import { useBookmarks } from '../context/BookmarkContext.jsx';
 import { categoryService } from '../services/categoryService.js';
 import {
   Menu,
@@ -14,12 +15,14 @@ import {
   Search,
   ExternalLink,
   ChevronDown,
+  Bookmark,
 } from 'lucide-react';
 
 export const PublicLayout = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const { bookmarkCount } = useBookmarks();
   const location = useLocation();
 
   // Close mobile drawer on route change
@@ -45,6 +48,7 @@ export const PublicLayout = () => {
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/content', label: 'All Articles' },
+    { to: '/bookmarks', label: 'Saved' },
     { to: '/about', label: 'About' },
     { to: '/contact', label: 'Contact' },
   ];
@@ -125,6 +129,22 @@ export const PublicLayout = () => {
               </button>
             </Link>
 
+            {/* Quick Bookmark Navigation with Badge */}
+            <Link to="/bookmarks">
+              <button
+                type="button"
+                className="relative p-2 rounded-xl bg-obsidian-850 hover:bg-obsidian-800 border border-obsidian-750 text-obsidian-300 hover:text-white transition-colors"
+                title="View Saved Bookmarks"
+              >
+                <Bookmark className={`w-3.5 h-3.5 ${bookmarkCount > 0 ? 'text-emperor-400 fill-emperor-400/20' : ''}`} />
+                {bookmarkCount > 0 && (
+                  <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-emperor-500 text-obsidian-950 font-mono text-[9px] font-bold flex items-center justify-center shadow-sm">
+                    {bookmarkCount}
+                  </span>
+                )}
+              </button>
+            </Link>
+
             {/* Dark / Light Mode Switcher */}
             <ThemeToggle />
 
@@ -139,8 +159,22 @@ export const PublicLayout = () => {
             </Button>
           </div>
 
-          {/* Mobile Right Actions: Theme Toggle + Menu */}
+          {/* Mobile Right Actions: Bookmark + Theme Toggle + Menu */}
           <div className="flex md:hidden items-center gap-2">
+            <Link to="/bookmarks">
+              <button
+                type="button"
+                className="relative p-1.5 rounded-xl bg-obsidian-850 border border-obsidian-750 text-obsidian-300 hover:text-white"
+                title="Saved Articles"
+              >
+                <Bookmark className={`w-4 h-4 ${bookmarkCount > 0 ? 'text-emperor-400 fill-emperor-400/20' : ''}`} />
+                {bookmarkCount > 0 && (
+                  <span className="absolute -top-1 -right-1 min-w-[14px] h-3.5 px-0.5 rounded-full bg-emperor-500 text-obsidian-950 font-mono text-[8px] font-bold flex items-center justify-center">
+                    {bookmarkCount}
+                  </span>
+                )}
+              </button>
+            </Link>
             <ThemeToggle />
             <button
               type="button"

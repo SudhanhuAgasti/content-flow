@@ -9,6 +9,7 @@ import { ArticleAudioPlayer } from '../../components/common/ArticleAudioPlayer.j
 import { ArticleAiSummary } from '../../components/common/ArticleAiSummary.jsx';
 import { ReadingProgressBar } from '../../components/common/ReadingProgressBar.jsx';
 import { ArticleReactions } from '../../components/common/ArticleReactions.jsx';
+import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { formatDate, calculateReadingTime } from '../../utils/formatters.js';
 import {
   ArrowLeft,
@@ -24,6 +25,7 @@ import { toast } from 'sonner';
 export const ContentDetailPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { isBookmarked, toggleBookmark } = useBookmarks();
 
   const [content, setContent] = useState(null);
   const [relatedContent, setRelatedContent] = useState([]);
@@ -125,6 +127,23 @@ export const ContentDetailPage = () => {
         </Link>
 
         <div className="flex items-center gap-2">
+          {/* Bookmark Button */}
+          <button
+            type="button"
+            onClick={() => toggleBookmark(content)}
+            className={`p-2.5 rounded-xl border transition-all duration-200 flex items-center gap-1.5 text-xs font-mono font-medium ${
+              isBookmarked(content._id || content.slug)
+                ? 'bg-emperor-500 text-obsidian-950 border-emperor-400 shadow-md shadow-emperor-500/20 font-bold'
+                : 'bg-obsidian-900 border-obsidian-800 text-obsidian-300 hover:text-white hover:bg-obsidian-850'
+            }`}
+            title={isBookmarked(content._id || content.slug) ? 'Saved in Bookmarks' : 'Bookmark this Story'}
+          >
+            <Bookmark className={`w-4 h-4 ${isBookmarked(content._id || content.slug) ? 'fill-current' : ''}`} />
+            <span className="hidden sm:inline">
+              {isBookmarked(content._id || content.slug) ? 'Saved' : 'Save'}
+            </span>
+          </button>
+
           <button
             type="button"
             onClick={handleShare}

@@ -34,6 +34,11 @@ const ContactPage = lazy(() =>
     default: m.ContactPage,
   }))
 );
+const BookmarksPage = lazy(() =>
+  import('../pages/public/BookmarksPage.jsx').then((m) => ({
+    default: m.BookmarksPage,
+  }))
+);
 const NotFoundPage = lazy(() =>
   import('../pages/public/NotFoundPage.jsx').then((m) => ({
     default: m.NotFoundPage,
@@ -84,6 +89,7 @@ export const AppRoutes = () => {
           <Route path="/category/:categorySlug" element={<CategoryPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/bookmarks" element={<BookmarksPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
 

@@ -2,13 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatDate, calculateReadingTime } from '../../utils/formatters.js';
 import { Badge } from '../common/Badge.jsx';
-import { Clock, ArrowUpRight, Calendar } from 'lucide-react';
+import { Clock, ArrowUpRight, Calendar, Bookmark } from 'lucide-react';
+import { useBookmarks } from '../../context/BookmarkContext.jsx';
 
 export const ContentCard = ({ content, layout = 'vertical', index = 0 }) => {
   if (!content) return null;
 
+  const { isBookmarked, toggleBookmark } = useBookmarks();
+  const bookmarked = isBookmarked(content._id || content.id || content.slug);
+
   const readingTime = calculateReadingTime(content.content || content.description);
   const animationDelayMs = (index % 8) * 90; // Staggered rising cascade effect
+
+  const handleBookmarkClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleBookmark(content);
+  };
 
   if (layout === 'horizontal') {
     return (
@@ -23,10 +33,23 @@ export const ContentCard = ({ content, layout = 'vertical', index = 0 }) => {
               className="w-full h-56 md:h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </Link>
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-4 left-4 z-10 flex items-center justify-between right-4">
             <Badge variant="category">
               {content.category?.name || 'Editorial'}
             </Badge>
+
+            <button
+              type="button"
+              onClick={handleBookmarkClick}
+              className={`p-2 rounded-xl backdrop-blur-md border transition-all duration-200 ${
+                bookmarked
+                  ? 'bg-emperor-500 text-obsidian-950 border-emperor-400 shadow-md shadow-emperor-500/25 scale-105'
+                  : 'bg-obsidian-950/70 text-obsidian-300 hover:text-white hover:bg-obsidian-900 border-obsidian-750'
+              }`}
+              title={bookmarked ? 'Remove bookmark' : 'Bookmark article'}
+            >
+              <Bookmark className={`w-3.5 h-3.5 ${bookmarked ? 'fill-current' : ''}`} />
+            </button>
           </div>
         </div>
 
@@ -105,10 +128,23 @@ export const ContentCard = ({ content, layout = 'vertical', index = 0 }) => {
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
             </Link>
-            <div className="absolute top-3 left-3 z-10">
+            <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between">
               <Badge variant="category" className="shadow-lg backdrop-blur-md text-[10px] py-0.5 px-2.5">
                 {content.category?.name || 'Editorial'}
               </Badge>
+
+              <button
+                type="button"
+                onClick={handleBookmarkClick}
+                className={`p-1.5 rounded-lg backdrop-blur-md border transition-all duration-200 ${
+                  bookmarked
+                    ? 'bg-emperor-500 text-obsidian-950 border-emperor-400 shadow-md shadow-emperor-500/25 scale-105'
+                    : 'bg-obsidian-950/70 text-obsidian-300 hover:text-white hover:bg-obsidian-900 border-obsidian-750'
+                }`}
+                title={bookmarked ? 'Remove bookmark' : 'Bookmark article'}
+              >
+                <Bookmark className={`w-3 h-3 ${bookmarked ? 'fill-current' : ''}`} />
+              </button>
             </div>
           </div>
 
