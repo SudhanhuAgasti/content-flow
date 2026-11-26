@@ -8,6 +8,7 @@ import { Skeleton } from '../../components/common/Skeleton.jsx';
 import { ArticleAudioPlayer } from '../../components/common/ArticleAudioPlayer.jsx';
 import { ArticleAiSummary } from '../../components/common/ArticleAiSummary.jsx';
 import { ReadingProgressBar } from '../../components/common/ReadingProgressBar.jsx';
+import { ArticleReactions } from '../../components/common/ArticleReactions.jsx';
 import { formatDate, calculateReadingTime } from '../../utils/formatters.js';
 import {
   ArrowLeft,
@@ -219,6 +220,13 @@ export const ContentDetailPage = () => {
           ))
         )}
       </div>
+
+      {/* Medium-style Multi-Clap & Emoji Reactions Suite */}
+      <ArticleReactions
+        slug={content.slug}
+        initialClaps={content.claps || 0}
+        initialReactions={content.reactions || {}}
+      />
 
       {/* Article Author Footer Card */}
       <div className="p-8 rounded-3xl bg-obsidian-900 border border-obsidian-800 flex flex-col sm:flex-row items-center justify-between gap-6">

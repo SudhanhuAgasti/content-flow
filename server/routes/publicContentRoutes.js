@@ -3,6 +3,7 @@ import {
   getPublishedContent,
   getContentBySlug,
   getCategoryContentBySlug,
+  reactToContent,
 } from '../controllers/publicContentController.js';
 import { getPublicCategories } from '../controllers/categoryController.js';
 import { apiLimiter } from '../middleware/rateLimiter.js';
@@ -19,6 +20,7 @@ router.get('/categories/:slug/content', getCategoryContentBySlug);
 // Public content
 router.get('/content', getPublishedContent);
 router.get('/content/:slug', getContentBySlug);
+router.post('/content/:slug/react', reactToContent);
 
 export default router;
 

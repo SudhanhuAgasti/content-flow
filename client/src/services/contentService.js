@@ -60,5 +60,12 @@ export const contentService = {
   getPublicContentBySlug: async (slug) => {
     return api.get(`/public/content/${slug}`);
   },
+
+  /**
+   * Add clap or emoji reaction to an article
+   */
+  reactToContent: async (slug, type = 'clap', count = 1) => {
+    return api.post(`/public/content/${slug}/react`, { type, count });
+  },
 };
 

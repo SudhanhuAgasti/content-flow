@@ -58,6 +58,18 @@ const contentSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    // Medium-style multi-claps & reactions
+    claps: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    reactions: {
+      fire: { type: Number, default: 0 },
+      insight: { type: Number, default: 0 },
+      rocket: { type: Number, default: 0 },
+      heart: { type: Number, default: 0 },
+    },
   },
   {
     timestamps: true,

@@ -137,6 +137,49 @@ export const getContentBySlug = async (req, res, next) => {
 };
 
 /**
+ * @desc   Add clap(s) or emoji reaction to an article (Public)
+ * @route  POST /api/public/content/:slug/react
+ * @access Public
+ */
+export const reactToContent = async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+    const { type = 'clap', count = 1 } = req.body;
+
+    const content = await Content.findOne({
+      slug: slug.toLowerCase(),
+      status: 'published',
+    });
+
+    if (!content) {
+      throw ApiError.notFound('Article not found or unpublished.');
+    }
+
+    const safeCount = Math.max(1, Math.min(50, parseInt(count, 10) || 1));
+
+    if (type === 'clap') {
+      content.claps = (content.claps || 0) + safeCount;
+    } else if (['fire', 'insight', 'rocket', 'heart'].includes(type)) {
+      if (!content.reactions) {
+        content.reactions = { fire: 0, insight: 0, rocket: 0, heart: 0 };
+      }
+      content.reactions[type] = (content.reactions[type] || 0) + 1;
+    } else {
+      throw ApiError.badRequest('Invalid reaction type');
+    }
+
+    await content.save();
+
+    return sendResponse(res, 200, 'Reaction recorded', {
+      claps: content.claps,
+      reactions: content.reactions,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
  * @desc   Get category info and its published articles by category slug (Public)
  * @route  GET /api/public/categories/:slug/content
  * @access Public
