@@ -4,6 +4,7 @@ import {
   getContentBySlug,
   getCategoryContentBySlug,
   reactToContent,
+  askArticleCopilotHandler,
 } from '../controllers/publicContentController.js';
 import { getPublicCategories } from '../controllers/categoryController.js';
 import { apiLimiter } from '../middleware/rateLimiter.js';
@@ -21,6 +22,7 @@ router.get('/categories/:slug/content', getCategoryContentBySlug);
 router.get('/content', getPublishedContent);
 router.get('/content/:slug', getContentBySlug);
 router.post('/content/:slug/react', reactToContent);
+router.post('/content/:slug/ask', askArticleCopilotHandler);
 
 export default router;
 

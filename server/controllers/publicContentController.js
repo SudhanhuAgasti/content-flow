@@ -2,6 +2,7 @@ import { Content } from '../models/Content.js';
 import { Category } from '../models/Category.js';
 import { ApiError } from '../utils/apiError.js';
 import { sendResponse } from '../utils/apiResponse.js';
+import { askArticleCopilot } from '../services/ragService.js';
 
 /**
  * @desc   Get published content list with search, category filtering & pagination (Public)
@@ -236,4 +237,55 @@ export const getCategoryContentBySlug = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * @desc   Ask Article AI Copilot (RAG on Article)
+ * @route  POST /api/public/content/:slug/ask
+ * @access Public
+ */
+export const askArticleCopilotHandler = async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+    const { query } = req.body;
+
+    if (!query || typeof query !== 'string' || query.trim().length === 0) {
+      throw ApiError.badRequest('A non-empty query string is required');
+    }
+
+    if (query.trim().length > 500) {
+      throw ApiError.badRequest('Query cannot exceed 500 characters');
+    }
+
+    const content = await Content.findOne({
+      slug,
+      status: 'published',
+    })
+      .populate('category', 'name slug')
+      .lean();
+
+    if (!content) {
+      throw ApiError.notFound(`Published article with slug "${slug}" not found.`);
+    }
+
+    const copilotResult = await askArticleCopilot({
+      article: content,
+      query: query.trim(),
+    });
+
+    return sendResponse(
+      res,
+      200,
+      'Article Copilot answer generated',
+      {
+        answer: copilotResult.answer,
+        source: copilotResult.source,
+        relevantChunksCount: copilotResult.relevantChunksCount,
+        query: query.trim(),
+      }
+    );
+  } catch (error) {
+    next(error);
+  }
+};
+
 

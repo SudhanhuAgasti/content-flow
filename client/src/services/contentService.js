@@ -67,5 +67,12 @@ export const contentService = {
   reactToContent: async (slug, type = 'clap', count = 1) => {
     return api.post(`/public/content/${slug}/react`, { type, count });
   },
+
+  /**
+   * Ask Article AI Copilot (RAG-grounded answering)
+   */
+  askArticleCopilot: async (slug, query) => {
+    return api.post(`/public/content/${slug}/ask`, { query });
+  },
 };
 

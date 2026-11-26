@@ -9,6 +9,7 @@ import { ArticleAudioPlayer } from '../../components/common/ArticleAudioPlayer.j
 import { ArticleAiSummary } from '../../components/common/ArticleAiSummary.jsx';
 import { ReadingProgressBar } from '../../components/common/ReadingProgressBar.jsx';
 import { ArticleReactions } from '../../components/common/ArticleReactions.jsx';
+import { AskTheArticleCopilot } from '../../components/common/AskTheArticleCopilot.jsx';
 import { useBookmarks } from '../../context/BookmarkContext.jsx';
 import { formatDate, calculateReadingTime } from '../../utils/formatters.js';
 import {
@@ -114,6 +115,9 @@ export const ContentDetailPage = () => {
     <>
       {/* Top Fixed Reading Progress Bar */}
       <ReadingProgressBar />
+
+      {/* Floating Ask the Article AI Copilot (RAG on Story) */}
+      <AskTheArticleCopilot article={content} />
 
       <article className="max-w-4xl mx-auto px-6 py-12 md:py-16 space-y-12">
       {/* Top Navigation & Breadcrumbs */}
