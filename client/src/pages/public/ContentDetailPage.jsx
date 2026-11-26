@@ -7,6 +7,7 @@ import { Button } from '../../components/common/Button.jsx';
 import { Skeleton } from '../../components/common/Skeleton.jsx';
 import { ArticleAudioPlayer } from '../../components/common/ArticleAudioPlayer.jsx';
 import { ArticleAiSummary } from '../../components/common/ArticleAiSummary.jsx';
+import { ReadingProgressBar } from '../../components/common/ReadingProgressBar.jsx';
 import { formatDate, calculateReadingTime } from '../../utils/formatters.js';
 import {
   ArrowLeft,
@@ -107,7 +108,11 @@ export const ContentDetailPage = () => {
   const readingTime = calculateReadingTime(content.content);
 
   return (
-    <article className="max-w-4xl mx-auto px-6 py-12 md:py-16 space-y-12">
+    <>
+      {/* Top Fixed Reading Progress Bar */}
+      <ReadingProgressBar />
+
+      <article className="max-w-4xl mx-auto px-6 py-12 md:py-16 space-y-12">
       {/* Top Navigation & Breadcrumbs */}
       <div className="flex items-center justify-between">
         <Link
@@ -259,6 +264,7 @@ export const ContentDetailPage = () => {
         </section>
       )}
     </article>
+    </>
   );
 };
 
